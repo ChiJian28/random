@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Page</title>
+    <link rel="stylesheet" href="course.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   <!-- 调用外接icon --> 
+    <link rel="stylesheet" href="resp-course.css">
+</head>
+<body>
+    <!-- quick pass -->
+    <ul id="quickPass" class="quick-pass">
+        <li>
+            <button onclick="scrollToElement('html')">HTML</button>
+        </li>
+        <li>
+            <button onclick="scrollToElement('css')">CSS</button>
+        </li>
+        <li>
+            <button onclick="scrollToElement('javascript')">Javascript</button>
+        </li>
+        <li>
+            <button onclick="scrollToElement('python')">Python</button>
+        </li>
+        <li>
+            <button onclick="scrollToElement('sql')">SQL</button>
+        </li>
+        <li>
+            <button onclick="scrollToElement('other')">Others</button>
+        </li>
+    </ul>
+    <!-- create position fixed function -->
+    <script>
+        window.onload = function() {
+            var button = document.getElementById('quickPass');
+            var buttonTop = button.offsetTop;
+
+            function handleScroll() {
+                var scrollTop = window.pageYOffset;
+
+                if (scrollTop > buttonTop) {
+                button.classList.add('scrolled');
+                } else {
+                button.classList.remove('scrolled');
+                }
+
+                window.requestAnimationFrame(handleScroll);
+            }
+
+            window.requestAnimationFrame(handleScroll);
+            }
+    </script>
+    <!-- create header with nav bar -->
+    <header> 
+        <nav id="navbar">
+            <div class="logo" id="Logo">
+                PlusAca.
+             </div>
+            <input type="checkbox" id="click">
+            <label for="click" class="menu-btn">
+                <i class="fa fa-bars" style="font-size:24px"></i>
+            </label>
+            <ul>
+                <li>
+                    <a href="about.html" id="Icon">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-university" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">About</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="../index.html" id="Icon2">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Home</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="course.html" id="Icon3">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Course</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="contact.html" id="Icon4">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-comment" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Contact</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="pricing.html" id="Icon5">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Pricing</div>
+                    </a>
+                </li>
+                <li style="margin-right: 0px;">
+                     <form class="search-form">
+                         <input type="text" placeholder="Search..." id="search-input">
+                         <button type="submit"><i class="fa fa-search"></i></button>
+                     </form>
+                 </li>
+                 <li>
+                    <a href="login.html" id="Icon6">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Login</div>
+                    </a>
+                </li>
+             </ul>
+        </nav>
+         <!-- create nav bar background-color changes function -->
+        <script>
+            window.addEventListener('scroll', function() {
+                var icon = document.getElementById('Icon');
+                var icon2 = document.getElementById('Icon2');
+                var icon3 = document.getElementById('Icon3');
+                var icon4 = document.getElementById('Icon4');
+                var icon5 = document.getElementById('Icon5');
+                var icon6 = document.getElementById('Icon6');
+                var logo = document.getElementById('Logo');
+                var navbar = document.getElementById('navbar');
+                    if (window.scrollY > 0) {
+                        navbar.classList.add('scrolled');
+                        logo.classList.add('scrolled');
+                        icon.classList.add('scrolled');
+                        icon2.classList.add('scrolled');
+                        icon3.classList.add('scrolled');
+                        icon4.classList.add('scrolled');
+                        icon5.classList.add('scrolled');
+                        icon6.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                        logo.classList.remove('scrolled');
+                        icon.classList.remove('scrolled');
+                        icon2.classList.remove('scrolled');
+                        icon3.classList.remove('scrolled');
+                        icon4.classList.remove('scrolled');
+                        icon5.classList.remove('scrolled');
+                        icon6.classList.remove('scrolled');
+                    }
+                    });
+               
+        </script>
+         <!-- create search function -->
+        <div id="courseList" style="display: none;">
+            <div class="course">
+              <h1>WWW</h1>
+              <p>Domain name</p>
+            </div>
+            <div class="course">
+              <h1>cloud-hosting</h1>
+              <p>Cloud hosting</p>
+            </div>
+            <div class="course">
+              <h1>cloud-computing</h1>
+              <p>Cloud computing</p>
+            </div>
+            <div class="course">
+              <h1>HTML</h1>
+              <p>Structure your website</p>
+            </div>
+            <div class="course">
+              <h1>CSS</h1>
+              <p>Style your website</p>
+            </div>
+            <div class="course">
+              <h1>Javascript</h1>
+              <p>Dynamic your website</p>
+            </div>
+            <div class="course">
+              <h1>Python</h1>
+              <p>Popular programming language</p>
+            </div>
+            <div class="course">
+              <h1>SQL</h1>
+              <p>Database language</p>
+            </div>
+            <div class="course">
+              <h1>Other</h1>
+              <p>Majority programming languages</p>
+            </div>
+        </div>
+        <!-- search the content in a page or search for other web pagees -->
+        <script>
+            // Get the search input element and course list
+          const searchInput = document.getElementById('search-input');
+          const courseList = document.getElementById('courseList');
+
+          
+          
+          // Create a dropdown element and append it to the search input element
+          const dropdown = document.createElement('div');
+          dropdown.id = 'myDropdown';
+          searchInput.parentNode.insertBefore(dropdown, searchInput.nextSibling);
+          
+          // Add an event listener to the search input for keyup events
+            searchInput.addEventListener('keyup', function() {
+                // Get the search term and convert it to lowercase
+                const search = searchInput.value.toLowerCase();
+
+                // Define an array of search results
+                const results = [
+                    { title: 'Home page', url: '../index.html' },
+                    { title: 'About page', url: 'about.html' },
+                    { title: 'Contact page', url: 'contact.html' },
+                    { title: 'Login page', url: 'login.html' },
+                    { title: 'Pricing page', url: 'pricing.html' },
+                    { title: 'Course page', url: 'course.html' },
+                    { title: 'Tutor page', url: 'tutor.html' },
+                    { title: 'Payment page', url: 'payment.html' },
+                    { title: 'Book page', url: 'books.html' }
+                ];
+
+                // Filter the results based on the search term
+                const filteredResults = results.filter(function(result) {
+                return result.title.toLowerCase().includes(search);
+                });
+
+                // Display the search results in the dropdown
+                dropdown.innerHTML = "";
+                    filteredResults.forEach(function(result) {
+                    const link = document.createElement('a');
+                    link.href = result.url;
+                    link.textContent = result.title;
+                    dropdown.appendChild(link);
+                });
+
+                // Show or hide the dropdown based on the number of search results
+                if (filteredResults.length > 0) {
+                dropdown.classList.add('show');
+                } else {
+                dropdown.classList.remove('show');
+                }
+            });
+                     
+            // Add an event listener to the search input for keyup events
+            searchInput.addEventListener('keyup', function() {
+              // Get the search term and convert it to lowercase
+              const searchTerm = searchInput.value.toLowerCase();
+              const courses = courseList.querySelectorAll('.course');
+              let results = [];
+            
+              // Loop through each course in the list and check if it matches the search term
+              courses.forEach(function(course) {
+                const title = course.querySelector('h1').textContent.toLowerCase();
+                const description = course.querySelector('p').textContent.toLowerCase();
+                if (title.indexOf(searchTerm) !== -1 || description.indexOf(searchTerm) !== -1) {
+                  results.push(course);
+                }
+              });
+            
+              if (searchTerm !== '') {
+                results.forEach(function(result) {
+                  const title = result.querySelector('h1').textContent;
+                  const description = result.querySelector('p').textContent;
+                  const link = document.createElement('a');
+                  link.href = "#" + title.toLowerCase();
+                  link.textContent = title + " - " + description;
+                  dropdown.appendChild(link);
+            
+                  // Add a click event listener to the dropdown items to scroll to the corresponding course element
+                  link.addEventListener('click', function(event) {
+                    const id = link.getAttribute('href');
+                    const targetElement = document.querySelector(id);
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                    event.preventDefault();
+                  });
+                });
+              } else {
+                dropdown.innerHTML = "";
+              }
+            
+              if (results.length > 0) {
+                dropdown.classList.add('show');
+              } else {
+                dropdown.classList.remove('show');
+              }
+            });
+            
+            // Scroll to the top of the course list
+            courseList.scrollIntoView({ behavior: 'smooth' });
+            // Styling for the dropdown
+            const dropdownStyle = `
+              #myDropdown {
+                position: absolute;
+                background-color: #fff;
+                z-index: 1;
+                width: 100%;
+              }
+              #myDropdown.show {
+                display: block;
+              }
+              #myDropdown a {
+                color: #000;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                font-size: 14px;
+              }
+              #myDropdown a:hover {
+                background-color: #f2f2f2;
+              }
+            `;
+            
+            // Create a style element and append the dropdown style to it
+            const style = document.createElement('style');
+            style.innerHTML = dropdownStyle;
+            document.head.appendChild(style);
+        </script>
+    </header> 
+    <!-- create main body -->
+    <main>
+        <!-- create intro -->
+        <div class="bluewhite">
+            <div class="bluewhite-pic">
+                <img src="computer.png" alt="computer">
+            </div>
+            <div class="bluewhite-content">
+                <h1>If coding was a guessing game, then anyone could do it.</h1>
+                <p style="line-height: 25px; color: #76cbfd;">Coding requires a precise and systematic approach that is not based on guessing. It requires knowledge, skill, and practice to become proficient in coding.</p>
+                <button onclick="scrollToElement('www')">Find Course&nbsp;&nbsp;<i class="fa fa-caret-square-o-right"></i></button>
+                <a href="contact.html">Contact us</a>
+                <!-- scroll to function -->
+                <script>
+                    function scrollToElement(elementId) {
+                        let element = document.getElementById(elementId);
+                        if (element) {
+                        element.scrollIntoView({behavior: "smooth"});
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+        <!-- course1: Domain -->
+        <div class="www" id="www">
+            <h1>Fundamentals before coding</h1>
+            <div class="www-pic">
+                <a href="https://developer.mozilla.org/en-US/docs/Web"><img src="www.png" alt="domain names"></a>
+            </div>
+            <div class="www-content">
+                <p style="margin-bottom: 60px;">The World Wide Web (WWW) is a vast network of interconnected documents and resources that can be accessed via the internet. It has become an essential part of modern life, providing users with access to information, communication, and entertainment. The Web is made up of many different domains, including .net, .org, and .com, among others. Each of these domains has its own unique purpose and history.</p>
+                <p>The .net domain was originally created for use by internet service providers and other network-related organizations. It has since expanded to include a broader range of websites, but it is still primarily used by organizations that provide network services. The .org domain was initially intended for use by non-profit organizations, but it has also become popular among educational institutions, open-source projects, and other community-oriented websites. Finally, the .com domain is one of the most popular and widely used domains on the Web, and it is generally associated with commercial websites and businesses.</p>
+            </div>
+        </div>
+        <!-- course2: Cloud hosting -->
+        <div class="cloud" id="cloud-hosting">
+            <div class="cloud-pic">
+                <a href="https://aws.amazon.com/training/"><img src="cloud.png" alt="Cloud"></a>
+            </div>
+            <div class="cloud-content">
+                <p style="margin-bottom: 60px;">Cloud hosting is a form of web hosting that utilizes the power of cloud computing to deliver websites and applications to users. Instead of relying on a single physical server to host a website, cloud hosting uses a network of interconnected servers to distribute the workload and ensure high availability and performance.</p>
+                <p>One of the key benefits of cloud hosting is its scalability. Cloud hosting providers can easily adjust their resources to meet changing demands, allowing websites to handle sudden spikes in traffic without slowing down or crashing. This means that businesses can avoid costly downtime and maintain a high level of user experience, even during periods of high traffic.</p>
+            </div>
+            <div class="cloud-content2">
+                <p style="margin-bottom: 55px;">Cloud hosting also offers improved reliability and security. Because cloud hosting providers typically use redundant hardware and backup systems, websites hosted in the cloud are less likely to experience downtime or data loss. Additionally, cloud hosting providers typically implement advanced security measures to protect their infrastructure and data, providing an extra layer of protection for websites and applications.</p>
+                <p>Overall, cloud hosting is a powerful and flexible hosting model that offers many advantages over traditional hosting solutions. Whether you are a small business looking to keep your costs low, or a large enterprise looking to ensure high availability and performance, cloud hosting can provide the resources and support you need to succeed in the online marketplace.</p>
+            </div>
+        </div>
+        <!-- course3: Cloud computing -->
+        <div class="cloud-comp" id="cloud-computing">
+            <div class="cloud-comp-pic">
+                <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-cloud-computing#:~:text=Simply%20put%2C%20cloud%20computing%20is,resources%2C%20and%20economies%20of%20scale."><img src="manage.webp" alt="cloud computing"></a>
+            </div>
+            <div class="cloud-comp-content">
+                <p>Cloud computing is a technology that enables users to access computing resources, such as servers, storage, and applications, over the internet. Instead of hosting these resources on local servers or personal computers, users can access them through a cloud service provider. This approach offers several benefits, including scalability, flexibility, and cost-effectiveness.</p>
+                <p>Scalability is one of the main advantages of cloud computing. Cloud service providers can easily adjust their resources to meet changing demands, allowing users to handle sudden spikes in traffic or workloads without slowing down or crashing. This means that businesses can avoid costly downtime and maintain a high level of user experience, even during periods of high traffic</p>
+                <p>Overall, cloud computing is a powerful and flexible technology that offers many advantages over traditional computing solutions. Whether you are a small business looking to keep your costs low, or a large enterprise looking to ensure high availability and performance, cloud computing can provide the resources and support you need to succeed in the digital world.</p>
+            </div>
+        </div>
+        <!-- course4: HTML -->
+        <div class="html" id="html">
+            <h1>Welcome to <span>Coding</span> world.</h1>
+            <div class="html-pic">
+                <h1>HTML Example:</h1>
+                <img src="htmlexp.jpeg" alt="html code">
+                <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default_default">Try it Yourself</a>
+            </div>
+            <div class="html-content">
+                <h1 style="margin-bottom: 25px;">HTML</h1>
+                <h3>The language for building web pages</h3>
+                <ul>
+                    <li style="background-color: #04AA6D;"><a href="https://www.w3schools.com/html/default.asp">Learn HTML</a></li>
+                    <li style="background-color: #FFF4A3;"><a href="https://www.w3schools.com/videos/index.php" style=" color: black;">Video Tutorial</a></li>
+                    <li style="background-color: #282A35;"><a href="https://www.w3schools.com/tags/default.asp">HTML Reference</a></li>
+                    <li style="background-color: #FFC0C7;"><a href="https://shop.w3schools.com/collections/certifications/products/html-certificate" style=" color: black;">Get Certified</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- course5: CSS -->
+        <div class="css" id="css">
+            <div class="html-pic">
+                <h1>CSS Example:</h1>
+                <img src="cssexp.png" alt="css code">
+                <a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_default">Try it Yourself</a>
+            </div>
+            <div class="html-content">
+                <h1 style="margin-bottom: 25px;">CSS</h1>
+                <h3>The language for styling web pages</h3>
+                <ul>
+                    <li style="background-color: #04AA6D;"><a href="https://www.w3schools.com/css/default.asp">Learn CSS</a></li>
+                    <li style="background-color: #282A35;"><a href="https://www.w3schools.com/cssref/index.php">CSS Reference</a></li>
+                    <li style="background-color: #FFC0C7;"><a href="https://shop.w3schools.com/collections/certifications/products/css-certificate" style=" color: black;">Get Certified</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- course6: JS -->
+        <div class="js" id="javascript">
+            <div class="html-pic">
+                <h1>JavaScript Example:</h1>
+                <img src="javascriptexp.png" alt="javascript code">
+                <a href="https://www.w3schools.com/js/tryit.asp?filename=tryjs_default">Try it Yourself</a>
+            </div>
+            <div class="html-content">
+                <h1 style="margin-bottom: 25px; color: white;">JavaScript</h1>
+                <h3 style="color: white;">The language for programming web pages</h3>
+                <ul>
+                    <li style="background-color: #04AA6D;"><a href="https://www.w3schools.com/js/default.asp">Learn JavaScript</a></li>
+                    <li style="background-color: white;"><a href="https://www.w3schools.com/jsref/default.asp" style=" color: black;">JavaScript Reference</a></li>
+                    <li style="background-color: #FFC0C7;"><a href="https://shop.w3schools.com/collections/certifications/products/javascript-certificate" style=" color: black;">Get Certified</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- course7: Python -->
+        <div class="python" id="python">
+            <div class="html-pic">
+                <h1>Python Example:</h1>
+                <img src="python.gif" alt="python code">
+                <a href="https://www.w3schools.com/python/trypython.asp?filename=demo_indentation">Try it Yourself</a>
+            </div>
+            <div class="html-content">
+                <h1 style="margin-bottom: 25px; color: black;">Python</h1>
+                <h3 style="color: black;">A popular programming language</h3>
+                <ul>
+                    <li style="background-color: #04AA6D;"><a href="https://www.w3schools.com/python/default.asp" style="color: white;">Learn Python</a></li>
+                    <li style="background-color: #282A35;"><a href="https://www.w3schools.com/python/python_reference.asp" style=" color: white;">Python Reference</a></li>
+                    <li style="background-color: #FFC0C7;"><a href="https://shop.w3schools.com/collections/certifications/products/python-certificate" style=" color: black;">Get Certified</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- course8: SQL -->
+        <div class="sql" id="sql">
+            <div class="html-pic">
+                <h1>SQL Example:</h1>
+                <img src="sql.png" alt="python code">
+                <a href="https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_where">Try it Yourself</a>
+            </div>
+            <div class="html-content">
+                <h1 style="margin-bottom: 25px; color: black;">SQL</h1>
+                <h3 style="color: black;">A language for accessing databases</h3>
+                <ul>
+                    <li style="background-color: #04AA6D;"><a href="https://www.w3schools.com/sql/default.asp" style="color: white;">Learn SQL</a></li>
+                    <li style="background-color: #282A35;"><a href="https://www.w3schools.com/sql/sql_ref_keywords.asp" style=" color: white;">SQL Reference</a></li>
+                    <li style="background-color: #FFC0C7;"><a href="https://shop.w3schools.com/collections/certifications/products/sql-certificate" style=" color: black;">Get Certified</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- other programming languages -->
+        <div class="all" id="other">
+            <div class="cards">
+                <div class="card">
+                    <a href="https://www.w3schools.com/r/default.asp"><b>R</b></a>
+                    <a href="https://www.w3schools.com/kotlin/index.php"><b>Kotlin</b></a>
+                    <a href="https://www.w3schools.com/nodejs/default.asp"><b>Node.js</b></a>
+                    <a href="https://www.w3schools.com/react/default.asp"><b>React</b></a>
+                </div>
+                <div class="card">
+                    <a href="https://www.w3schools.com/js/js_json.asp"><b>JSON</b></a>
+                    <a href="https://www.w3schools.com/angular/default.asp"><b>AngularJS</b></a>
+                    <a href="https://www.w3schools.com/mysql/default.asp"><b>MySQL</b></a>
+                    <a href="https://www.w3schools.com/xml/default.asp"><b>XML</b></a>
+                </div>
+                <div class="card">
+                    <a href="https://www.w3schools.com/sass/default.php"><b>Sass</b></a>
+                    <a href="https://www.w3schools.com/icons/default.asp"><b>Icons</b></a>
+                    <a href="https://www.w3schools.com/css/css_rwd_intro.asp"><b>RWD</b></a>
+                    <a href="https://www.w3schools.com/graphics/default.asp"><b>Graphics</b></a>
+                </div>
+                <div class="card">
+                    <a href="https://www.w3schools.com/graphics/svg_intro.asp"><b>SVG</b></a>
+                    <a href="https://www.w3schools.com/graphics/canvas_intro.asp"><b>Canvas</b></a>
+                    <a href="https://www.w3schools.com/nodejs/nodejs_raspberrypi.asp"><b>Raspberry Pi</b></a>
+                    <a href="https://www.w3schools.com/cybersecurity/index.php"><b>Cyber Security</b></a>
+                </div>
+                <div class="card">
+                    <a href="https://www.w3schools.com/colors/default.asp"><b>Colors</b></a>
+                    <a href="https://www.w3schools.com/git/default.asp"><b>Git</b></a>
+                    <a href="https://www.w3schools.com/python/matplotlib_intro.asp"><b>Matplotlib</b></a>
+                    <a href="https://www.w3schools.com/python/numpy/default.asp"><b>NumPy</b></a>
+                </div>
+                <div class="code-editor">
+                    <h2>Code Editor</h2> <br>
+                    <p><b>With our online code editor, you can edit code and view the result in your browser</b></p> <br>
+                    <img src="codeeditor.gif" alt="live code editor">  <br>
+                    <a href="https://www.w3schools.com/tryit/tryit.asp?filename=tryhtml_hello">Try Frontend Editor (HTML/CSS/JS)</a> <br>
+                    <a href="https://www.w3schools.com/tryit/trycompiler.asp?filename=demo_python" style="background-color: #FFF4A3; color: black; margin-bottom: 180px;">Try Backend Editor (Python/PHP/Java/C..)</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-blue">
+            <div class="gray">
+                <h4>Regional Offices</h4>
+            </div>
+            <div class="footer-details">
+                <p>
+                    Plus Academy is an online, graphics-based computer science curriculum taught in Python provided by Plus University. 
+                    We create novel, world-class Computer Science education for your classroom —and it's entirely free. 
+                    We help every client find the best approach to develop computing skills.
+                </p>
+                <div class="contact-method">
+                    <a href="mailto:facebook.com"><i class="fa fa-facebook"></i></a>
+                    <a href="mailto:linkedin.com"><i class="fa fa-linkedin"></i></a>
+                    <a href="mailto:twitter.com"><i class="fa fa-twitter"></i></a>
+                    <a href="mailto:envelope.com"><i class="fa fa-envelope"></i></a>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <h5>Singapore</h5>
+                            <p>
+                                30 Orchard Road,
+                                <br>
+                                #02-31/23 Macdonald Street,
+                                <br>
+                                Singapore 24847
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+6592044023">+65 9204 4023</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>Hongkong</h5>
+                            <p>
+                                123 Ward Road
+                                <br>
+                                Baker Street,
+                                <br>
+                                Hongkong
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+85212334124">+852 1233 4124</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>Malaysia</h5>
+                            <p>
+                                2,Taman Permai,
+                                <br>
+                                Jalan Permai 2,
+                                <br>
+                                85000 Johor
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+60191234149">+60 19 1234149</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Malaysia</h5>
+                            <p>
+                                76 Taman Wujud,
+                                <br>
+                                Jalan Sentosa 3,
+                                <br>
+                                85000 Alola
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+60194172137">+60 19 4172137</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>Taiwan</h5>
+                            <p>
+                                4732 Jalan Steak,
+                                <br>
+                                Taman Bafferd,
+                                <br>
+                                Taiwan
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+88663907585">+886 6 390 7585</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>USA</h5>
+                            <p>
+                                2740 S West Pky
+                                <br>
+                                Wichita, Kansas(KS),
+                                <br>
+                                67210
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:(316)687-9121">(316) 687-9121</a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <div class="copyRight">
+                    <p>Copyright&copy;2023 PlusAca. All Rights Reserved.</p>
+                    <p><span class="privacy">Terms of Use</span>&nbsp;|&nbsp;<span class="privacy">Privacy Policy</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <a class="cta" href="tutor.html">
+                <span>GET A TUTOR !</span>
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

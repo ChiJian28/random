@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <!-- 调用外接icon -->
+    <link rel="stylesheet" href="resp-index.css">
+</head>
+<body>
+    <!-- create header with a nav bar -->
+    <header> 
+        <nav id="navbar">
+            <div class="logo" id="Logo">
+                PlusAca.
+             </div>
+            <input type="checkbox" id="click">
+            <label for="click" class="menu-btn">
+                <i class="fa fa-bars" style="font-size:24px"></i>
+            </label>
+            <ul>
+                <li>
+                    <a href="HTML/about.html" id="Icon">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-university" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">About</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html" id="Icon2">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Home</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="HTML/course.html" id="Icon3">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Course</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="HTML/contact.html" id="Icon4">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-comment" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Contact</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="HTML/pricing.html" id="Icon5">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Pricing</div>
+                    </a>
+                </li>
+                <li style="margin-right: 0px;">
+                     <form class="search-form">
+                         <input type="text" placeholder="Search..." id="search-input">
+                         <button type="submit"><i class="fa fa-search"></i></button>
+                     </form>
+                 </li>
+                 <li>
+                    <a href="HTML/login.html" id="Icon6">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Login</div>
+                    </a>
+                </li>
+             </ul>
+         </nav>
+         <!-- create nav bar background-color changes function -->
+         <script>
+            window.addEventListener('scroll', function() {
+                var icon = document.getElementById('Icon');
+                var icon2 = document.getElementById('Icon2');
+                var icon3 = document.getElementById('Icon3');
+                var icon4 = document.getElementById('Icon4');
+                var icon5 = document.getElementById('Icon5');
+                var icon6 = document.getElementById('Icon6');
+                var logo = document.getElementById('Logo');
+                var navbar = document.getElementById('navbar');
+                    if (window.scrollY > 0) {
+                        navbar.classList.add('scrolled');
+                        logo.classList.add('scrolled');
+                        icon.classList.add('scrolled');
+                        icon2.classList.add('scrolled');
+                        icon3.classList.add('scrolled');
+                        icon4.classList.add('scrolled');
+                        icon5.classList.add('scrolled');
+                        icon6.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                        logo.classList.remove('scrolled');
+                        icon.classList.remove('scrolled');
+                        icon2.classList.remove('scrolled');
+                        icon3.classList.remove('scrolled');
+                        icon4.classList.remove('scrolled');
+                        icon5.classList.remove('scrolled');
+                        icon6.classList.remove('scrolled');
+                    }
+                    });
+               
+         </script>
+         <!-- search function -->
+         <script>
+            const searchInput = document.getElementById('search-input');
+            const dropdown = document.createElement('div');
+            dropdown.id = 'myDropdown';
+            searchInput.parentNode.insertBefore(dropdown, searchInput.nextSibling);
+            
+            // Add an event listener to the search input for keyup events
+                searchInput.addEventListener('keyup', function() {
+            // Get the search term and convert it to lowercase
+            const search = searchInput.value.toLowerCase();
+
+            // Define an array of search results
+            const results = [
+            { title: 'Home page', url: 'index.html' },
+            { title: 'About page', url: 'HTML/about.html' },
+            { title: 'Contact page', url: 'HTML/contact.html' },
+            { title: 'Login page', url: 'HTML/login.html' },
+            { title: 'Pricing page', url: 'HTML/pricing.html' },
+            { title: 'Course page', url: 'HTML/course.html' },
+            { title: 'Tutor page', url: 'HTML/tutor.html' },
+            { title: 'Payment page', url: 'HTML/payment.html' },
+            { title: 'Book page', url: 'HTML/books.html' }
+            ];
+
+            // Filter the results based on the search term
+            const filteredResults = results.filter(function(result) {
+            return result.title.toLowerCase().includes(search);
+            });
+
+            // Display the search results in the dropdown
+            dropdown.innerHTML = "";
+            filteredResults.forEach(function(result) {
+            const link = document.createElement('a');
+            link.href = result.url;
+            link.textContent = result.title;
+            dropdown.appendChild(link);
+            });
+
+            // Show or hide the dropdown based on the number of search results
+            if (filteredResults.length > 0) {
+            dropdown.classList.add('show');
+            } else {
+            dropdown.classList.remove('show');
+            }
+        });
+
+            // Styling for the dropdown
+            const dropdownStyle = `
+                #myDropdown {
+                position: absolute;
+                background-color: #fff;
+                z-index: 1;
+                width: 100%;
+                }
+                #myDropdown.show {
+                display: block;
+                }
+                #myDropdown a {
+                color: #000;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                font-size: 14px;
+                }
+                #myDropdown a:hover {
+                background-color: #f2f2f2;
+                }
+            `;
+            
+            // Create a style element and append the dropdown style to it
+            const style = document.createElement('style');
+            style.innerHTML = dropdownStyle;
+            document.head.appendChild(style);
+         </script>
+    </header> 
+    <!-- creating main body -->
+    <main>
+        <!-- background-music -->
+        <audio autoplay loop>
+            <source src="bgm.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <!-- sign up form -->
+        <div class="sign-up-sect">
+            <div class="lady">
+                <img src="images/home_image/signpic.webp" alt="A lady" width="450" height="450"> 
+            </div>
+            <div class="sign-up">
+                <h1>Join the millions learning to code with PlusAcademy for free</h1>
+                <form id="form" onsubmit="return validateForm()">
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email"><br>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password"><br><br>
+                    <button>Sign up</button>
+                </form>
+                <!-- form validation -->
+                <script>
+                    function validateForm() {
+                    var name = document.getElementById("email").value.trim();   //   通过variable去获取html里面的节点，然后在js file里面用variable来应用
+                    var pss = document.getElementById("password").value.trim();      //trim to remove spaces between front and back of text, ensure the accuracy of data
+
+                    // if的话，它每个都会去check
+                    if (name == "" || pss == "") {        // 这里的意思就是说：如果html里面的节点是空的话，就。。。
+                        alert("Please fill in all fields");
+                        return false;
+                    }
+
+                    if (!name.includes("@") || !name.includes(".com")) {
+                        document.getElementById("email").style.border = "1px solid red";
+                        alert("Please enter a valid email address");
+                        return false;
+                    }
+
+
+                    if (pss.length < 6 ) {
+                        document.getElementById("password").style.border = "1px solid red";
+                        alert("Must be at least 6 characters");
+                        return false;
+                    } 
+
+                    return true; // Return true if all inputs pass validation
+
+
+                }
+                // 1. use onsubmit = function at the form element
+                // 2. use addEventListener to the form element then use arrow function
+                // 3. use HTML5 keyword 'required' to the element
+                // querySelector = 自定义target是谁: querySelector("#id"), querySelector(".class")
+                </script>
+                <small>
+                    By signing up for PlusAcademy, you agree to PlusAcademy's <br>
+                    <a href="https://www.codecademy.com/terms">Terms of Service</a>
+                    &
+                    <a href="https://www.codecademy.com/policy">Privacy Policy</a>
+                    <br>
+                    <br>
+                    <strong>Or sign up using:</strong>
+                    <br>
+                    <br>
+                    <br>
+                    <span><a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a></span>
+                    <span><a href="https://www.twitter.com"><i class="fa fa-twitter"></i></a></span>
+                    <span><a href="https://www.google.com"><i class="fa fa-google"></i></a></span>
+                    <span><a href="https://www.github.com"><i class="fa fa-github"></i></a></span>
+                </small>
+            </div>
+        </div>
+        <!-- styling card components -->
+        <div class="lightblue">
+            <div class="card-title">
+                <p>Start Learning</p>
+                <h2>Popular Courses</h2>
+            </div>
+            <div class="card-components">
+                <div class="card">
+                    <h2>Computer Science</h2>
+                    <ul>
+                        <li>Brief introduction to the field of computer science</li>
+                        <li>Overview of the fundamental concepts, such as algorithms, data structures, programming languages, and computer architecture</li>
+                        <li>A call-to-action button for beginners to start learning computer science.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h2>Programming Languages</h2>
+                    <ul>
+                        <li>Overview of popular programming languages, such as Java, Python, C++, and JavaScript</li>
+                        <li>Comparison between programming languages based on their features and use cases</li>
+                        <li>A list of free online resources for learning programming languages.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h2>Artificial Intelligence</h2>
+                    <ul>
+                        <li>An introduction to artificial intelligence, including machine learning and deep learning</li>
+                        <li>Real-life examples of AI applications, such as self-driving cars, facial recognition, and recommendation systems</li>
+                        <li>A list of resources for further learning, such as online courses, blogs, and academic journals.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="catalog">
+                <a href="https://www.codecademy.com/catalog/all">Explore Full Catalog</a>
+            </div>
+        </div>
+        <!-- quiz -->
+        <div class="yellow">
+            <div class="not-sure">
+                <h1>Not sure where to start ?</h1>
+                <p>
+                    This short quiz will sort you out. Answer a few simple questions to get personal career advice and course recommendations.
+                </p>
+                <a href="https://www.codecademy.com/explore/sorting-quiz">Take the quiz</a>
+            </div>
+            <div class="window">
+                <img src="images/home_image/quiz.svg" alt="window">
+            </div>
+        </div>
+        <!-- stories from real ppl -->
+        <div class="rice-color">
+            <div class="stories">
+                <h2>Stories from real people</h2>
+                <div class="story-desc">
+                    <span>Watch and read stories from the Codecademy community.</span>
+                    <span><a href="https://www.codecademy.com/learner-stories">Explore more stories <i class="fa fa-hand-o-right" style="font-size:24px"></i></a></span>
+                </div>
+            </div>
+            <div class="fourimg">
+                <div class="imgs">
+                    <figure>
+                        <img src="images/home_image/charac1.jpeg" alt="learner portrait">
+                        <figcaption>
+                            <a href="https://www.codecademy.com/learner-stories/software-engineering/2MO8kzxJNYEMAMnzkobseL">
+                                <h3>Taking a different path: One Team Lead's story</h3>
+                                <p>Giacomo S., Team Lead , London</p>
+                            </a>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="imgs">
+                    <figure>
+                        <img src="images/home_image/charac2.jpeg" alt="learner portrait">
+                        <figcaption>
+                            <a href="https://www.codecademy.com/learner-stories/web-development/41NQvA0QQfkxGz5SIWRoc9">
+                                <h3>See how this Architect switched to UX Design</h3>
+                                <p>Alison V., Senior UX Designer @ Acquia, Columbus</p>
+                            </a>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="imgs">
+                    <figure>
+                        <img src="images/home_image/charac3.jpeg" alt="learner portrait">
+                        <figcaption>
+                            <a href="https://www.codecademy.com/learner-stories/software-engineering/6PXY3ugBEw8MV5YffXH6sp">
+                                <h3>Lessons from a Chef turned Deputy CTO</h3>
+                                <p>Manuel S., Deputy CTO @ PaxFamilia, Brussels</p>
+                            </a>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="imgs">
+                    <figure>
+                        <img src="images/home_image/charac4.jpeg" alt="learner portrait">
+                        <figcaption>
+                            <a href="https://www.codecademy.com/learner-stories/web-development/5QNjwhzuCwfMfSPezJhWra">
+                                <h3>How one Developer learned to code with her disability</h3>
+                                <p>Rosita R., Front-End Developer, Brummen</p>
+                            </a>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <!-- join stg big -->
+        <div class="dark-blue">
+            <div class="join">
+                <span><span style="font-size: 32px; font-weight: 700;">Join on something big</span></span>
+                <span><span style="font-size: 32px; font-weight: 700;">50M</span> <br> Learners</span>
+                <span><span style="font-size: 32px; font-weight: 700;">190+</span> <br> Countries</span>
+                <span><span style="font-size: 32px; font-weight: 700;">3.7B</span> <br> Code submits</span>
+            </div>
+            <div class="black">
+                <div class="lvl-up">
+                    <div class="team-skill">
+                        <p>Plus Academy</p>
+                        <small>from skillsoft</small>
+                        <h1>Level up your team's skills</h1>
+                        <p style="margin-bottom: 30px; line-height: 25px;">Give your team the knowledge, experience, and confidence they need to tackle any problem.</p>
+                        <a href="https://www.codecademy.com/business">Explore business plans</a>
+                    </div>
+                    <div class="geo">
+                        <img src="images/home_image/lvl.svg" alt="geometry pic" height="300" width="300">
+                    </div>
+                </div>
+            </div>
+            <div class="startfree">
+                <div class="ten">
+                    <img src="images/home_image/signup2.webp" alt="tenpic" width="400" height="300">
+                </div>
+                <div class="free">
+                    <h2>Start for free</h2>
+                    <p>If you've made it this far, you must be at least a little curious. Sign up and take the first step toward your goals.</p>
+                    <a href="https://www.codecademy.com/register">Sign up</a>
+                </div>
+            </div>
+        </div>
+        <!-- contact us -->
+        <div class="contact">
+            <div class="contact-link">
+                <a href="contact.html">
+                    Contact us <br>
+                    &emsp;&emsp;>
+                </a>
+            </div>
+            <div class="contact-des">
+                <h1 style="text-align: center;">Speak to our Regional Consultant</h1>
+                <small style="margin-top: 15px;">
+                The best time to start your journey to computer science world is yesterday. 
+                <br> 
+                Get in touch and we can help you find the best way to grasp the fundamentals of IT.
+                </small>
+            </div>
+        </div>
+    </main>
+    <!-- create footer -->
+    <footer>
+        <div class="footer-blue">
+            <div class="gray">
+                <h4>Regional Offices</h4>
+            </div>
+            <div class="footer-details">
+                <p>
+                    Plus Academy is an online, graphics-based computer science curriculum taught in Python provided by Plus University. 
+                    We create novel, world-class Computer Science education for your classroom —and it's entirely free. 
+                    We help every client find the best approach to develop computing skills.
+                </p>
+                <div class="contact-method">
+                    <a href="mailto:facebook.com"><i class="fa fa-facebook"></i></a>
+                    <a href="mailto:linkedin.com"><i class="fa fa-linkedin"></i></a>
+                    <a href="mailto:twitter.com"><i class="fa fa-twitter"></i></a>
+                    <a href="mailto:envelope.com"><i class="fa fa-envelope"></i></a>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <h5>Singapore</h5>
+                            <p>
+                                30 Orchard Road,
+                                <br>
+                                #02-31/23 Macdonald Street,
+                                <br>
+                                Singapore 24847
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+6592044023">+65 9204 4023</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>Hongkong</h5>
+                            <p>
+                                123 Ward Road
+                                <br>
+                                Baker Street,
+                                <br>
+                                Hongkong
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+85212334124">+852 1233 4124</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>Malaysia</h5>
+                            <p>
+                                2,Taman Permai,
+                                <br>
+                                Jalan Permai 2,
+                                <br>
+                                85000 Johor
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+60191234149">+60 19 1234149</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Malaysia</h5>
+                            <p>
+                                76 Taman Wujud,
+                                <br>
+                                Jalan Sentosa 3,
+                                <br>
+                                85000 Alola
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+60194172137">+60 19 4172137</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>Taiwan</h5>
+                            <p>
+                                4732 Jalan Steak,
+                                <br>
+                                Taman Bafferd,
+                                <br>
+                                Taiwan
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+88663907585">+886 6 390 7585</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>USA</h5>
+                            <p>
+                                2740 S West Pky
+                                <br>
+                                Wichita, Kansas(KS),
+                                <br>
+                                67210
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:(316)687-9121">(316) 687-9121</a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <div class="copyRight">
+                    <p>Copyright&copy;2023 PlusAca. All Rights Reserved.</p>
+                    <p><span class="privacy">Terms of Use</span>&nbsp;|&nbsp;<span class="privacy">Privacy Policy</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

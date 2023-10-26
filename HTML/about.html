@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   <!-- 调用外接icon -->
+    <link rel="stylesheet" href="resp-about.css">
+</head>
+<body>
+    <!-- create header with a nav bar -->
+    <header> 
+        <nav id="navbar">
+            <div class="logo" id="Logo">
+                PlusAca.
+             </div>
+            <input type="checkbox" id="click">
+            <label for="click" class="menu-btn">
+                <i class="fa fa-bars" style="font-size:24px"></i>
+            </label>
+            <ul>
+                <li>
+                    <a href="about.html" id="Icon">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-university" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">About</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="../index.html" id="Icon2">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Home</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="course.html" id="Icon3">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Course</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="contact.html" id="Icon4">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-comment" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Contact</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="pricing.html" id="Icon5">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Pricing</div>
+                    </a>
+                </li>
+                <li style="margin-right: 0px;">
+                     <form class="search-form">
+                         <input type="text" placeholder="Search..." id="search-input">
+                         <button type="submit"><i class="fa fa-search"></i></button>
+                     </form>
+                 </li>
+                 <li>
+                    <a href="login.html" id="Icon6">
+                        <div class="layer">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                        <div class="text">Login</div>
+                    </a>
+                </li>
+             </ul>
+             <!-- search function -->
+             <script>
+                const searchInput = document.getElementById('search-input');
+                const dropdown = document.createElement('div');
+                dropdown.id = 'myDropdown';
+                searchInput.parentNode.insertBefore(dropdown, searchInput.nextSibling);
+                
+                // Add an event listener to the search input for keyup events
+                    searchInput.addEventListener('keyup', function() {
+                // Get the search term and convert it to lowercase
+                const search = searchInput.value.toLowerCase();
+
+                // Define an array of search results
+                const results = [
+                { title: 'Home page', url: '../index.html' },
+                { title: 'About page', url: 'about.html' },
+                { title: 'Contact page', url: 'contact.html' },
+                { title: 'Login page', url: 'login.html' },
+                { title: 'Pricing page', url: 'pricing.html' },
+                { title: 'Course page', url: 'course.html' },
+                { title: 'Tutor page', url: 'tutor.html' },
+                { title: 'Payment page', url: 'payment.html' },
+                { title: 'Book page', url: 'books.html' }
+                ];
+
+                // Filter the results based on the search term
+                const filteredResults = results.filter(function(result) {
+                return result.title.toLowerCase().includes(search);
+                });
+
+                // Display the search results in the dropdown
+                dropdown.innerHTML = "";
+                filteredResults.forEach(function(result) {
+                const link = document.createElement('a');
+                link.href = result.url;
+                link.textContent = result.title;
+                dropdown.appendChild(link);
+                });
+
+                // Show or hide the dropdown based on the number of search results
+                if (filteredResults.length > 0) {
+                dropdown.classList.add('show');
+                } else {
+                dropdown.classList.remove('show');
+                }
+            });
+
+                // Styling for the dropdown
+                const dropdownStyle = `
+                    #myDropdown {
+                    position: absolute;
+                    background-color: #fff;
+                    z-index: 1;
+                    width: 100%;
+                    }
+                    #myDropdown.show {
+                    display: block;
+                    }
+                    #myDropdown a {
+                    color: #000;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                    font-size: 14px;
+                    }
+                    #myDropdown a:hover {
+                    background-color: #f2f2f2;
+                    }
+                `;
+                
+                // Create a style element and append the dropdown style to it
+                const style = document.createElement('style');
+                style.innerHTML = dropdownStyle;
+                document.head.appendChild(style);
+             </script>
+         </nav>
+         <!-- create nav bar background-color changes function -->
+         <script>
+            window.addEventListener('scroll', function() {
+                var icon = document.getElementById('Icon');
+                var icon2 = document.getElementById('Icon2');
+                var icon3 = document.getElementById('Icon3');
+                var icon4 = document.getElementById('Icon4');
+                var icon5 = document.getElementById('Icon5');
+                var icon6 = document.getElementById('Icon6');
+                var logo = document.getElementById('Logo');
+                var navbar = document.getElementById('navbar');
+                    if (window.scrollY > 0) {
+                        navbar.classList.add('scrolled');
+                        logo.classList.add('scrolled');
+                        icon.classList.add('scrolled');
+                        icon2.classList.add('scrolled');
+                        icon3.classList.add('scrolled');
+                        icon4.classList.add('scrolled');
+                        icon5.classList.add('scrolled');
+                        icon6.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                        logo.classList.remove('scrolled');
+                        icon.classList.remove('scrolled');
+                        icon2.classList.remove('scrolled');
+                        icon3.classList.remove('scrolled');
+                        icon4.classList.remove('scrolled');
+                        icon5.classList.remove('scrolled');
+                        icon6.classList.remove('scrolled');
+                    }
+                    });
+               
+         </script>
+    </header> 
+    <!-- create main body -->
+    <main>
+        <!-- create intro -->
+        <div class="intro">
+            <div class="video-container">
+                <video autoplay loop>
+                    <source src="intro.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="words">
+                <h1>Discover the Story Behind Our <span>Computer Science</span> Learning Platform</h1>
+                <p>
+                    Our computer science learning platform is on a mission to democratize tech education. Join us and unlock your full potential with high-quality resources and personalized support.
+                </p>
+                <button onclick="scrollToElement('section1')">Discover History</button>
+                <a href="contact.html" class="ctas" style="background-color: rgb(13, 13, 76);">Contact us</a>
+            </div>
+            <!-- scroll to function -->
+            <script>
+                function scrollToElement(elementId) {
+                    let element = document.getElementById(elementId);
+                    if (element) {
+                    element.scrollIntoView({behavior: "smooth"});
+                    }
+                }
+            </script>
+        </div>
+        <!-- team members -->
+        <div class="lightgray" id="section1">
+            <div class="member1">
+                <div class="avatar">
+                    <img src="member1.webp" alt="ceo">
+                </div>
+                <div class="avadesc">
+                    <h1>Meet our Experts</h1>
+                    <p>At Plus Academy, we are proud to have a team of experts who are passionate about computer science education. Our instructors possess a wealth of knowledge and experience in their respective fields, which allows our students to access top-notch instruction and mentorship. Our team members have advanced degrees and extensive experience in the tech industry, and they are dedicated to sharing their expertise with our students.</p>
+                    <p>Our team members are highly skilled professionals who are committed to creating high-quality computer science courses that are accessible to everyone. They have a deep understanding of the latest technologies and programming languages, and they work tirelessly to ensure that our courses are up-to-date and relevant. They are also highly skilled in teaching complex concepts in a way that is easy to understand and digest.</p>
+                </div>
+            </div>
+            <div class="member2">
+                <div class="avatar">
+                    <img src="member2.webp" alt="ceo">
+                </div>
+                <div class="avadesc">
+                    <h1>Passionate about Education</h1>
+                    <p>Our team members at Plus Academy are deeply passionate about education and committed to creating high-quality computer science courses that are accessible to everyone. We believe that education has the power to transform lives and create a better future for all. That's why we are dedicated to providing the most up-to-date and relevant education to our students, and creating a supportive and collaborative learning environment where they can feel comfortable asking questions, sharing ideas, and learning from each other.</p>
+                    <p>We believe that education is not just about acquiring knowledge, but also about developing critical thinking skills, problem-solving abilities, and a love of learning that can last a lifetime. That's why we are constantly learning and growing ourselves, so that we can provide the most effective education to our students. Ultimately, our goal is to empower our students with the knowledge and skills they need to succeed in the tech industry and beyond, and to make a positive impact on the world.</p>
+                </div>
+            </div>
+            <div class="member3">
+                <div class="avatar">
+                    <img src="member3.webp" alt="ceo">
+                </div>
+                <div class="avadesc">
+                    <h1>Innovation and Creativity</h1>
+                    <p>At Plus Academy, we believe that innovation and creativity are essential to providing a high-quality computer science education. Our team members are encouraged to think outside the box and come up with new, exciting ways to engage students and make learning fun and effective. We believe that by fostering an environment of innovation and creativity, we can not only improve the educational experience for our students, but also advance the field of computer science as a whole.</p>
+                    <p>Our team members are constantly seeking new ways to engage students and make learning a dynamic and interactive process. From developing new curriculum modules to incorporating the latest technologies, we are always striving to stay ahead of the curve and provide the best possible education to our students. We believe that by encouraging innovation and creativity, we can help our students develop the skills and knowledge they need to succeed in the fast-paced and ever-changing world of technology. Ultimately, our goal is to inspire a lifelong love of learning in our students, and to empower them to become innovators and leaders in their own right.</p>
+                </div>
+            </div>
+            <div class="member4">
+                <div class="avatar">
+                    <img src="member4.webp" alt="ceo">
+                </div>
+                <div class="avadesc">
+                    <h1>Diversity and Inclusion</h1>
+                    <p>At Plus Academy, we believe that diversity and inclusion are essential components of a successful learning environment. By embracing diversity in all its forms, we can create a more enriching educational experience for everyone involved. That's why we actively seek out team members from diverse backgrounds and experiences, and strive to create courses that reflect this diversity. We recognize that every learner is unique, with their own strengths, challenges, and learning styles, and we work hard to ensure that our courses are accessible and welcoming to all.</p>
+                    <p>Inclusivity is not just a buzzword for us; it's a core value that we uphold in everything we do. We want all our students to feel valued, supported, and empowered to achieve their goals, regardless of their background or circumstances. We're committed to creating a safe and welcoming space where everyone can learn, grow, and thrive, and we believe that this is the key to creating a more equitable and just society. So if you're looking for a learning community that celebrates diversity, promotes inclusivity, and values your unique perspective, then you've come to the right place!</p>
+                </div>
+            </div>
+        </div>
+        <!-- company founded -->
+        <div class="wrap">
+            <div class="card">
+                <div class="history">
+                    <h1>Company History</h1>
+                </div>
+                <div class="rolebg" style="background-image: linear-gradient(to right top, #ebebc0, #edddb2, #efcea7, #f0bfa0, #eeb19d, #f2ad97, #f6a892, #faa48d, #ffab7c, #ffb66a, #f8c359, #e7d24c);">
+                    
+                </div>
+                <div class="role">
+                    <img src="twoppl.png" alt="twopeople">
+                </div>
+                <div class="content">
+                    <h1>Plus Academy</h1>
+                    <p>Founded by a core management team from top technology companies, Plus Academy was started by multi-disciplinary computer experts with extensive experience in bringing innovative software projects to successful operation. Today, our team brings together specialists from the software development, design, data analysis, and IT sectors to form a holistic approach to tackle complex challenges in the technology industry.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="rolebg" style="background-image: linear-gradient(to right top, #e8e8e8, #d9d9e6, #c6cae5, #afbde4, #93b1e3, #7fa3d8, #6b95cc, #5588c1, #4b74aa, #416293, #374f7d, #2c3e67);">
+                    
+                </div>
+                <div class="role">
+                    <img src="scientist.png" alt="scientist">
+                </div>
+                <div class="content">
+                    <h1>Plus Academy</h1>
+                    <p>Our innovative approach gives industry leaders consultation with full services and solutions – from financing a system to designing and managing software assets that are customized to client needs. We pride ourselves on being at the forefront of technological advances and strive to constantly push the boundaries of what is possible in the world of software development.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="rolebg" style="background-image: linear-gradient(to right top, #b895bf, #afa7d9, #a0baee, #90cefa, #85e0ff, #7ce2ff, #72e4ff, #67e6ff, #53d9ff, #52c9ff, #64b9ff, #7fa6ff);">
+                    
+                </div>
+                <div class="role">
+                    <img src="statistics.png" alt="statistics">
+                </div>
+                <div class="content">
+                    <h1>Plus Academy</h1>
+                    <p>We continues to innovate and push the boundaries of what is possible in the world of software development. The company's team of experts remains committed to providing holistic solutions that help businesses stay ahead of the competition and achieve their goals. With a focus on delivering value to clients, Plus Academy is poised to continue its growth and success in the years to come.</p>
+                </div>
+            </div>
+        </div>
+        <!-- create vision -->
+        <div class="lightgreen">  
+            <div class="col">
+                <div class="vision-pic">
+                    <img src="about-pic1.png" alt="Vision">
+                </div>
+                <div class="vision-content">
+                    <h1>Vision</h1>
+                    <p>Innovative and Sustainable Technology Solutions</p>
+                    <p>At Plus Academy, our vision is to provide accessible, high-quality computer science education to anyone, anywhere in the world. We believe that technology has the power to transform lives and create positive change, and we're committed to making sure that everyone has the opportunity to learn and participate in this exciting field. Whether you're a student just starting out or a seasoned professional looking to expand your skills, we're here to help you achieve your goals and reach your full potential.</p>
+                </div>
+            </div>
+            <div class="col2">
+                <div class="vision-pic">
+                    <img src="about-pic2.png" alt="Mission">
+                </div>
+                <div class="vision-content">
+                    <h1>Mission</h1>
+                    <p>Empowering People with Digital Skills for the Future</p>
+                    <p>Our mission is to create a community of lifelong learners who are passionate about computer science and technology. We believe that learning is a collaborative process, and we're dedicated to providing a supportive and inclusive environment where everyone can share their ideas and learn from each other. Our courses are designed to be engaging, interactive, and challenging, and we're constantly updating our curriculum to reflect the latest trends and developments in the field.</p>
+                </div>
+            </div>
+            <div class="col3">
+                <div class="vision-pic">
+                    <img src="about-pic3.png" alt="Value">
+                </div>
+                <div class="vision-content">
+                    <h1>Values</h1>
+                    <p>Integrity, Innovation, Safety, Collaboration, and Customer Satisfaction</p>
+                    <p>At Plus Academy, we're guided by a set of core values that inform everything we do. These values include a commitment to excellence, a passion for learning and innovation, a focus on inclusivity and diversity, and a dedication to social responsibility. We believe that by embodying these values in our work, we can create a learning community that is both inspiring and impactful, and help to build a better future for all.</p>
+                </div>
+            </div>
+        </div>
+        <!-- partnerships & collaboration -->
+        <div class="green">
+            <div class="center-pic">
+                <img src="collab.png" alt="collab">
+            </div>
+            <div class="p-c">
+                <div class="partner-text">
+                    <h1>Industry Partnerships</h1>
+                    <p>We partner with leading technology companies to provide our students with real-world experiences that can help them succeed in the tech industry. These partnerships enable us to offer exclusive opportunities for internships, mentorship, and job placement.</p>
+                    <h1>Academic Partnerships</h1>
+                    <p>We work closely with academic institutions to ensure that our courses meet the highest standards of quality and rigor. Our academic partnerships also allow us to offer certifications and credits that can be transferred to other institutions.</p>
+                    <h1>Community Partnerships</h1>
+                    <p>We believe that education should be accessible to everyone, regardless of their background or financial situation. That's why we partner with community organizations to provide scholarships and other resources to help underserved populations access our courses.</p>
+                </div>
+            </div>
+            <div class="p-c-content">
+                <div class="collab-text">
+                    <h1>Collaborative Projects</h1>
+                    <p>At Plus Academy, we believe in the power of collaboration. We actively seek partnerships with companies and organizations that share our vision of creating high-quality computer science education that is accessible to everyone. Through collaborative projects, we aim to combine our expertise and resources to make a greater impact on the world.</p>
+                    <h1>Student Collaboration</h1>
+                    <p>We encourage our students to collaborate with each other on projects and assignments. Through this collaboration, students learn from each other's strengths and weaknesses, build teamwork skills, and form lasting connections.</p>
+                </div>
+                <div class="discover">
+                    <a href="index.html">Discover More</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- create footer -->
+    <footer>
+        <div class="footer-blue">
+            <div class="gray">
+                <h4>Regional Offices</h4>
+            </div>
+            <div class="footer-details">
+                <p>
+                    Plus Academy is an online, graphics-based computer science curriculum taught in Python provided by Plus University. 
+                    We create novel, world-class Computer Science education for your classroom —and it's entirely free. 
+                    We help every client find the best approach to develop computing skills.
+                </p>
+                <div class="contact-method">
+                    <a href="mailto:facebook.com"><i class="fa fa-facebook"></i></a>
+                    <a href="mailto:linkedin.com"><i class="fa fa-linkedin"></i></a>
+                    <a href="mailto:twitter.com"><i class="fa fa-twitter"></i></a>
+                    <a href="mailto:envelope.com"><i class="fa fa-envelope"></i></a>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <h5>Singapore</h5>
+                            <p>
+                                30 Orchard Road,
+                                <br>
+                                #02-31/23 Macdonald Street,
+                                <br>
+                                Singapore 24847
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+6592044023">+65 9204 4023</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>Hongkong</h5>
+                            <p>
+                                123 Ward Road
+                                <br>
+                                Baker Street,
+                                <br>
+                                Hongkong
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+85212334124">+852 1233 4124</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>Malaysia</h5>
+                            <p>
+                                2,Taman Permai,
+                                <br>
+                                Jalan Permai 2,
+                                <br>
+                                85000 Johor
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+60191234149">+60 19 1234149</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Malaysia</h5>
+                            <p>
+                                76 Taman Wujud,
+                                <br>
+                                Jalan Sentosa 3,
+                                <br>
+                                85000 Alola
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+60194172137">+60 19 4172137</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>Taiwan</h5>
+                            <p>
+                                4732 Jalan Steak,
+                                <br>
+                                Taman Bafferd,
+                                <br>
+                                Taiwan
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+88663907585">+886 6 390 7585</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>USA</h5>
+                            <p>
+                                2740 S West Pky
+                                <br>
+                                Wichita, Kansas(KS),
+                                <br>
+                                67210
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:316687-9121">(316) 687-9121</a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <div class="copyRight">
+                    <p>Copyright&copy;2023 PlusAca. All Rights Reserved.</p>
+                    <p><span class="privacy">Terms of Use</span>&nbsp;|&nbsp;<span class="privacy">Privacy Policy</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Page</title>
+    <link rel="stylesheet" href="pricing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   <!-- 调用外接icon -->
+    <link rel="stylesheet" href="resp-pricing.css">
+</head>
+<body>
+   <!-- create header with a nav bar -->
+   <header> 
+    <nav id="navbar">
+        <div class="logo" id="Logo">
+            PlusAca.
+         </div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+            <i class="fa fa-bars" style="font-size:24px"></i>
+        </label>
+        <ul>
+            <li>
+                <a href="about.html" id="Icon">
+                    <div class="layer">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i class="fa fa-university" aria-hidden="true"></i>
+                    </div>
+                    <div class="text">About</div>
+                </a>
+            </li>
+            <li>
+                <a href="../index.html" id="Icon2">
+                    <div class="layer">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </div>
+                    <div class="text">Home</div>
+                </a>
+            </li>
+            <li>
+                <a href="course.html" id="Icon3">
+                    <div class="layer">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="text">Course</div>
+                </a>
+            </li>
+            <li>
+                <a href="contact.html" id="Icon4">
+                    <div class="layer">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i class="fa fa-comment" aria-hidden="true"></i>
+                    </div>
+                    <div class="text">Contact</div>
+                </a>
+            </li>
+            <li>
+                <a href="pricing.html" id="Icon5">
+                    <div class="layer">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i class="fa fa-money" aria-hidden="true"></i>
+                    </div>
+                    <div class="text">Pricing</div>
+                </a>
+            </li>
+            <li style="margin-right: 0px;">
+                 <form class="search-form">
+                     <input type="text" placeholder="Search..." id="search-input">
+                     <button type="submit"><i class="fa fa-search"></i></button>
+                 </form>
+             </li>
+             <li>
+                <a href="login.html" id="Icon6">
+                    <div class="layer">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </div>
+                    <div class="text">Login</div>
+                </a>
+            </li>
+         </ul>
+    </nav>
+    <!-- create nav bar background-color changes function -->
+    <script>
+        window.addEventListener('scroll', function() {
+            var icon = document.getElementById('Icon');
+            var icon2 = document.getElementById('Icon2');
+            var icon3 = document.getElementById('Icon3');
+            var icon4 = document.getElementById('Icon4');
+            var icon5 = document.getElementById('Icon5');
+            var icon6 = document.getElementById('Icon6');
+            var logo = document.getElementById('Logo');
+            var navbar = document.getElementById('navbar');
+                if (window.scrollY > 0) {
+                    navbar.classList.add('scrolled');
+                    logo.classList.add('scrolled');
+                    icon.classList.add('scrolled');
+                    icon2.classList.add('scrolled');
+                    icon3.classList.add('scrolled');
+                    icon4.classList.add('scrolled');
+                    icon5.classList.add('scrolled');
+                    icon6.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                    logo.classList.remove('scrolled');
+                    icon.classList.remove('scrolled');
+                    icon2.classList.remove('scrolled');
+                    icon3.classList.remove('scrolled');
+                    icon4.classList.remove('scrolled');
+                    icon5.classList.remove('scrolled');
+                    icon6.classList.remove('scrolled');
+                }
+                });
+           
+    </script>
+    <!-- search function -->
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const dropdown = document.createElement('div');
+        dropdown.id = 'myDropdown';
+        searchInput.parentNode.insertBefore(dropdown, searchInput.nextSibling);
+        
+        // Add an event listener to the search input for keyup events
+            searchInput.addEventListener('keyup', function() {
+        // Get the search term and convert it to lowercase
+        const search = searchInput.value.toLowerCase();
+
+        // Define an array of search results
+        const results = [
+        { title: 'Home page', url: '../index.html' },
+        { title: 'About page', url: 'about.html' },
+        { title: 'Contact page', url: 'contact.html' },
+        { title: 'Login page', url: 'login.html' },
+        { title: 'Pricing page', url: 'pricing.html' },
+        { title: 'Course page', url: 'course.html' },
+        { title: 'Tutor page', url: 'tutor.html' },
+        { title: 'Payment page', url: 'payment.html' },
+        { title: 'Book page', url: 'books.html' }
+        ];
+
+        // Filter the results based on the search term
+        const filteredResults = results.filter(function(result) {
+        return result.title.toLowerCase().includes(search);
+        });
+
+        // Display the search results in the dropdown
+        dropdown.innerHTML = "";
+        filteredResults.forEach(function(result) {
+        const link = document.createElement('a');
+        link.href = result.url;
+        link.textContent = result.title;
+        dropdown.appendChild(link);
+        });
+
+        // Show or hide the dropdown based on the number of search results
+        if (filteredResults.length > 0) {
+        dropdown.classList.add('show');
+        } else {
+        dropdown.classList.remove('show');
+        }
+    });
+
+        // Styling for the dropdown
+        const dropdownStyle = `
+            #myDropdown {
+            position: absolute;
+            background-color: #fff;
+            z-index: 1;
+            width: 100%;
+            }
+            #myDropdown.show {
+            display: block;
+            }
+            #myDropdown a {
+            color: #000;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            }
+            #myDropdown a:hover {
+            background-color: #f2f2f2;
+            }
+        `;
+        
+        // Create a style element and append the dropdown style to it
+        const style = document.createElement('style');
+        style.innerHTML = dropdownStyle;
+        document.head.appendChild(style);
+     </script>
+    </header> 
+    <!-- create main body -->
+    <main>
+        <!-- money-machine -->
+        <div class="navy">
+            <div class="money-machine">
+                <video autoplay loop>
+                    <source src="moneymachine.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="mm-content">
+                <h1>Simple, straight forward pricing.</h1>
+                <p>Choose the plan that's right for your journey. Whether you're just getting started with computer science or well down the path to personalization, we've got you covered.</p>
+                <button onclick="scrollToElement('section1')">Pricing</button>
+                <a href="contact.html" class="ctus" style="background-color: rgb(26, 33, 126);">Contact us</a>
+            </div>
+            <!-- scroll to function -->
+            <script>
+                function scrollToElement(elementId) {
+                    let element = document.getElementById(elementId);
+                    if (element) {
+                    element.scrollIntoView({behavior: "smooth"});
+                    }
+                }
+            </script>
+            <a href="payment.html" class="payment">
+                <div class="icon-badge">
+                  <i class="fa fa-shopping-cart" style="font-size:24px; color: black"></i>
+                  <span class="badge">0</span>
+                </div>
+            </a>
+        </div>
+        <!-- pricing package -->
+        <div class="lightgreen" id="section1">
+            <div class="pricing-title">
+                <h1>Pricing built for businesses of all sizes.</h1>
+                <p>Always know what you'll pay.</p>
+            </div>
+            <div class="cards">
+                <div class="card1">
+                    <h2>INTEGRATED</h2>
+                    <hr>
+                    <div class="text">
+                        <p style="margin-top: 30px;">Access a complete payments platform with simple, pay-as-you-go pricing</p>
+                        <p><span>3%</span> + RM1.00</p>
+                        <small>per successful card charge or successful bank transaction</small>
+                        <div class="feature" style="margin-top: 60px;">
+                            <img src="https://b.stripecdn.com/site-statics-srv/assets/assets/img/v3/pricing/header/payment-760b95ef54244dcaef19b3d998030b46.svg" alt="icon" width="30" height="30">
+                            <p>Everything you need to manage payments</p>
+                        </div>
+                        <div class="feature">
+                            <img src="https://b.stripecdn.com/site-statics-srv/assets/assets/img/v3/pricing/header/payment-760b95ef54244dcaef19b3d998030b46.svg" alt="icon" width="30" height="30">
+                            <p>Get hundreds of feature updates each year</p>
+                        </div>
+                        <div class="feature">
+                            <img src="https://b.stripecdn.com/site-statics-srv/assets/assets/img/v3/pricing/header/plan-star-e12252470d5893fb7973de4fd379e679.svg" alt="icon" width="30" height="30">
+                            <p>No setup fees, monthly fees, or hidden fees</p>
+                        </div>
+                        <a href="https://www.codecademy.com/pricing" class="started">GET STARTED IN MINUTES <i class="fa fa-angle-right" style="font-size:24px"></i></a>
+                    </div>
+                    <div class="card2">
+                        <h2 style="color: #fff;">CUSTOMISED</h2>
+                        <hr>
+                        <div class="text">
+                            <p style="margin-top: 30px; color: #fff;">Custom Package for IT-related Business</p>
+                            <p class="volume" style="color: #aab7c4; line-height: 25px; margin-top: 10px; font-size: 15px;">Available for businesses with complex IT infrastructure, high transaction volumes, or unique technology requirements</p>
+                            <table>
+                                <tr>
+                                    <td>Volume discounts</td>
+                                    <td>Country-specific rates</td>
+                                </tr>
+                                <tr>
+                                    <td>Multi-product discounts</td>
+                                    <td>Interchange pricing</td>
+                                </tr>
+                            </table>
+                            <a href="https://www.codecademy.com/pricing" class="started" style="color: #87bbfd; background-color: rgba(85,90,191,.2); border: none;">CONTACT SALES&emsp;&emsp;<i class="fa fa-arrow-circle-right" style="font-size:24px"></i></a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- card components -->
+        <div class="green">
+            <h1 class="goals">Find a plan that fits your goals</h1>
+            <div class="cards">
+                <div class="card">
+                    <div class="row1">
+                        <p><b>Basic</b></p>
+                    </div>
+                    <div class="row2">
+                        <h3>RM0</h3>
+                        <small>Always free</small>
+                    </div>
+                    <div class="row3">
+                        <p>Start learning something new with basic access</p>
+                        <a href="https://www.codecademy.com/register">Sign up</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="row1">
+                        <p><b>Plus</b></p>
+                    </div>
+                    <div class="row2">
+                        <h3>RM59.90</h3>
+                        <small>Billed annually or RM65.49 billed monthly</small>
+                    </div>
+                    <div class="row3">
+                        <p>Build in-demand technical skills for work or a personal project</p>
+                        <a href="https://www.codecademy.com/checkout?plan_id=proSilverAnnualV2b_7trial&redirect_url=%2Fpricing">Try Plus for free</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="row1">
+                        <p><b>Pro</b></p>
+                    </div>
+                    <div class="row2">
+                        <h3>RM98.90</h3>
+                        <small>Billed annually or RM119.90 billed monthly</small>
+                    </div>
+                    <div class="row3">
+                        <p>Develop the skills and experience to land a job in tech</p>
+                        <a href="https://www.codecademy.com/subscriptions/proGoldAnnualV2b_7trial/checkout?redirect_url=%2Fpricing">Try Pro for free</a>
+                    </div>
+                </div>
+            </div>
+            <div class="recommend">
+                <p><span class="fa fa-star">&nbsp;Recommended</span></p>
+            </div>
+            <div class="middle-row">
+                <div class="teamplans">
+                    <p>Looking for team plans?</p>
+                    <a href="https://www.codecademy.com/business/teams-quote">Request a quote</a>
+                    <img src="google1.svg" alt="Google">
+                    <img src="amazon1.svg" alt="amazon">
+                    <img src="spotify1.svg" alt="spotify">
+                    <img src="linkedin1.svg" alt="Linked in">
+                </div>
+            </div>
+             <!-- creating table for subcribing features -->
+            <table class="t1">
+                <tr>
+                    <th style="text-align: left;" class="features">Features</th>
+                    <th class="ct">
+                        Basic
+                        <br>
+                        <br>
+                        <a href="https://www.codecademy.com/register">Sign up</a>
+                    </th>
+                    <th class="ct">
+                        Plus
+                        <br>
+                        <br>
+                        <a href="https://www.codecademy.com/checkout?plan_id=proSilverAnnualV2b_7trial&redirect_url=%2Fpricing">Try Plus for free</a>
+                    </th>
+                    <th class="ct">
+                        Pro
+                        <br>
+                        <br>
+                        <a href="https://www.codecademy.com/checkout?plan_id=proGoldAnnualV2b_7trial&redirect_url=%2Fpricing">Try Pro for free</a>
+                    </th>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">Basic access to free courses</td>
+                    <td>&check;</td>
+                    <td>&check;</td>
+                    <td>&check;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">Community support</td>
+                    <td>&check;</td>
+                    <td>&check;</td>
+                    <td>&check;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">Learning resources</td>
+                    <td>&check;</td>
+                    <td>&check;</td>
+                    <td>&check;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">Practice on our mobile app</td>
+                    <td>Limited</td>
+                    <td><b>Unlimited</b></td>
+                    <td><b>Unlimited</b></td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">All courses</td>
+                    <td>&check;</td>
+                    <td>&check;</td>
+                    <td>&check;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">Quizzes</td>
+                    <td>&check;</td>
+                    <td>&check;</td>
+                    <td>&check;</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">Personalized practice</td>
+                    <td>&check;</td>
+                    <td>&check;</td>
+                    <td>&check;</td>
+                </tr>
+            </table>
+        </div>
+        <!-- create scroll bar -->
+        <div class="darkblue">
+            <div id="con">
+                <h2 style="margin-bottom: 50px; color: white;">Students are viewing</h2>
+                <ul class="rolls">
+                    <li class="roll"><a href="https://www.udemy.com/course/the-complete-guide-to-angular-2/"><img src="opt2.png" alt="cs-related pic"></a></li>
+                    <li class="roll"><a href="https://www.udemy.com/course/the-complete-sql-bootcamp/"><img src="opt1.png" alt="cs-related pic"></a></li>
+                    <li class="roll"><a href="https://www.udemy.com/course/java-the-complete-java-developer-course/"><img src="opt3.png" alt="cs-related pic"></a></li>
+                    <li class="roll"><a href="https://www.udemy.com/course/the-complete-javascript-course/"><img src="opt4.png" alt="cs-related pic"></a></li>
+                    <li class="roll"><a href="https://www.udemy.com/course/complete-python-bootcamp/"><img src="opt5.png" alt="cs-related pic"></a></li>
+                    <li class="roll"><a href="https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/"><img src="opt6.png" alt="cs-related pic"></a></li>
+                    <li class="roll"><a href="https://www.udemy.com/course/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/"><img src="opt7.png" alt="cs-related pic"></a></li>
+                    <li class="roll"><a href="https://www.udemy.com/course/react-redux/"><img src="opt8.png" alt="cs-related pic"></a></li>
+                    <li class="roll"><a href="https://www.udemy.com/course/ios-13-app-development-bootcamp/"><img src="opt9.png" alt="cs-related pic"></a></li>
+                    <li class="roll"><a href="https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/"><img src="opt10.png" alt="cs-related pic"></a></li>
+                </ul>
+                <div id="bu">
+                    <button class="bu">&lt;</button>    
+                    <button class="bu">></button>
+                </div>
+            </div>
+            <!-- create scroll bar function -->
+            <script>
+                let oUl = document.querySelector('.rolls');
+                oUl.innerHTML += oUl.innerHTML;
+                let aLi = document.querySelectorAll('.roll');
+                let aBu = document.querySelectorAll('.bu');
+                oUl.style.width = aLi[0].offsetWidth * aLi.length + 400 + 'px';
+                let speed = -2;
+                let move = ()=> {
+                    if (oUl.offsetLeft < - oUl.offsetWidth/2) {
+                        oUl.style.left = '0';
+                    }
+                    if (oUl.offsetLeft > 0){
+                        oUl.style.left = - oUl.offsetWidth/2 + 'px';
+                    }
+                    oUl.style.left = oUl.offsetLeft + speed + 'px';
+                }
+    
+                let timer  = setInterval(move, 30)
+                
+                oUl.addEventListener('mouseover', function(){
+                    clearInterval(timer);
+                });
+    
+                oUl.addEventListener('mouseout', function(){
+                    timer = setInterval(move, 30)
+                })
+    
+                aBu[0].onclick = function(){
+                    speed = -2;
+                }
+                aBu[1].onclick = function(){
+                    speed = 2;
+                }
+            </script>
+        </div>
+        <!-- create FAQ -->
+        <div class="wrapper-faq">
+            <div class="faq">
+                <div class="faq-pic">
+                    <video autoplay loop>
+                        <source src="safebuy.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="faq-content">
+                    <h1 style="margin-bottom: 10px;">Is that safe to buy?</h1>
+                    <p style="margin-bottom: 80px;">We understand that security is a top concern for our customers, especially when it comes to online transactions. That's why we take payment security very seriously. All transactions are processed through secure payment gateways that meet the highest industry standards for security and encryption. Additionally, our website uses SSL encryption to protect your personal information and payment details. This means that all data transferred between your browser and our website is encrypted and cannot be intercepted by third parties.</p>
+                    <p>We are confident in the quality of our course and offer a 100% money-back guarantee within 30 days of purchase if you're not completely satisfied. We have a large number of satisfied customers who have given us positive reviews, which you can read on our website or on third-party review sites. Our support team is always available to help with any questions or concerns. We are committed to providing a safe, high-quality, and enjoyable learning experience for all our students.</p>
+                </div>
+            </div>
+            <div class="faq2">
+                <h1>Frequently asked questions</h1>
+                <div class="faq-pic">
+                    <img src="doubt.webp" alt="doubt">
+                </div>
+                <div class="faq-content">
+                    <h1>General</h1>
+                    <details>
+                        <summary style="margin-top: 20px;"><h3>What's the difference between Basic,Plus, and Pro?</h3></summary>
+                        <ul>
+                            <li>The Basic plan gives you access to free courses and the ability to start some more advanced courses.</li>
+                            <li>Both Plus and Pro include everything in Basic, plus extra content and features like real-world projects, guided paths, and quizzes and practice to test your skills as you learn.</li>
+                            <li>Plus is for people looking to learn or advance a skill — so it includes all courses and most skill paths.</li>
+                            <li>Pro is for those looking to start or advance their career. In addition to all the features from Basic and Plus, Pro includes career paths, interview prep skill paths, code challenges, and career services.</li>
+                            <li>Pro learners can also earn professional certifications in select career paths. To earn a professional certification, you need to pass a series of exams. Exams consist of multiple choice and coding questions.</li>
+                            <li>Professional certifications are currently available for Full-Stack Engineer, Front-End Engineer, Back-End Engineer, Data Scientist: Machine Learning, Data Scientist: Analytics, and Computer Science.</li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary><h3>Do I need to know how to code before signing up?</h3></summary>
+                        <p>No, most of our users have zero experience when they sign up. Our curriculum is designed to teach anyone to learn to code.</p>
+                    </details>
+                    <details>
+                        <summary><h3>Do you offer a student discount?</h3></summary>
+                        <p>Yes! Eligible college students can join PlusAcademy Pro Student. It's an annual membership with all the same features as Codecademy Pro, but for over 35% off the regular price. Click here to join <a href="#">PlusAcademy Pro Student</a>.</p>
+                    </details>
+                    <h1 style="margin-top: 80px;">Upgrades</h1>
+                    <details>
+                        <summary style="margin-top: 20px;"><h3>Why should I upgrade from Basics?</h3></summary>
+                        <p>We built PlusAcademy Plus and Pro based on the lessons we've learned from teaching over 45 million people to code since 2011. If you're ready to accelerate your learning and apply your skills to real-world scenarios, either the PlusAcademy Plus or Pro membership is for you.</p>
+                    </details>
+                    <details>
+                        <summary><h3>How do I upgrade from Plus to Pro?</h3></summary>
+                        <p>If you're a current Plus member and want to update to Pro, you can upgrade in the <a href="payment.html">payment and plan</a> section of your account settings.</p>
+                    </details>
+                    <h1 style="margin-top: 80px;">Canceling</h1>
+                    <details>
+                        <summary style="margin-top: 20px;"><h3>How do I cancel my subscription?</h3></summary>
+                        <ul>
+                            <li>You may cancel your subscription at any time in your payment settings. When you cancel, your subscription ends at the end of the current billing cycle.</li>
+                            <li>You can also pause your subscription if you need to take a break.</li>
+                            <li>Learn more in our <a href="#">Terms of Service</a>.</li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+            <!-- Show people where the students here used to work" -->
+            <div class="purple">
+                <div class="learner-work">
+                    <h1>Our students work at</h1>
+                    <div class="fr1">
+                        <img src="google.svg" alt="Google">
+                        <img src="facebook.svg" alt="Fb">
+                        <img src="apple.svg" alt="Apple">
+                        <img src="ea.svg" alt="Ea">
+                        <img src="amazon.svg" alt="amazon">
+                        <img src="ibm.svg" alt="IBM">
+                    </div>
+                    <div class="fr2">
+                        <img src="microsoft.svg" alt="microsoft">
+                        <img src="reddit.svg" alt="reddit">
+                        <img src="spotify.svg" alt="spotify">
+                        <img src="uber.svg" alt="uber">
+                        <img src="youtube.svg" alt="youtube">
+                        <img src="ig.svg" alt="insta">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- create footer -->
+    <footer> 
+        <div class="footer-blue">
+            <div class="gray">
+                <h4>Regional Offices</h4>
+            </div>
+            <div class="footer-details">
+                <p>
+                    Plus Academy is an online, graphics-based computer science curriculum taught in Python provided by Plus University. 
+                    We create novel, world-class Computer Science education for your classroom —and it's entirely free. 
+                    We help every client find the best approach to develop computing skills.
+                </p>
+                <div class="contact-method">
+                    <a href="mailto:facebook.com"><i class="fa fa-facebook"></i></a>
+                    <a href="mailto:linkedin.com"><i class="fa fa-linkedin"></i></a>
+                    <a href="mailto:twitter.com"><i class="fa fa-twitter"></i></a>
+                    <a href="mailto:envelope.com"><i class="fa fa-envelope"></i></a>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <h5>Singapore</h5>
+                            <p>
+                                30 Orchard Road,
+                                <br>
+                                #02-31/23 Macdonald Street,
+                                <br>
+                                Singapore 24847
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+6592044023">+65 9204 4023</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>Hongkong</h5>
+                            <p>
+                                123 Ward Road
+                                <br>
+                                Baker Street,
+                                <br>
+                                Hongkong
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+85212334124">+852 1233 4124</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>Malaysia</h5>
+                            <p>
+                                2,Taman Permai,
+                                <br>
+                                Jalan Permai 2,
+                                <br>
+                                85000 Johor
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+60191234149">+60 19 1234149</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>Malaysia</h5>
+                            <p>
+                                76 Taman Wujud,
+                                <br>
+                                Jalan Sentosa 3,
+                                <br>
+                                85000 Alola
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+60194172137">+60 19 4172137</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>Taiwan</h5>
+                            <p>
+                                4732 Jalan Steak,
+                                <br>
+                                Taman Bafferd,
+                                <br>
+                                Taiwan
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:+88663907585">+886 6 390 7585</a>
+                            </p>
+                        </td>
+                        <td>
+                            <h5>USA</h5>
+                            <p>
+                                2740 S West Pky
+                                <br>
+                                Wichita, Kansas(KS),
+                                <br>
+                                67210
+                            </p>
+                            <p>
+                                T:
+                                <a href="tel:(316)687-9121">(316) 687-9121</a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <div class="copyRight">
+                    <p>Copyright&copy;2023 PlusAca. All Rights Reserved.</p>
+                    <p><span class="privacy">Terms of Use</span>&nbsp;|&nbsp;<span class="privacy">Privacy Policy</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <a class="cta" href="books.html">
+                <span>GET A BOOKS!</span>
+            </a>
+        </div>
+    </footer> 
+</body>
+</html>

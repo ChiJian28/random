@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {                     /*reset the default styles of HTML elements*/
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Poppins-Regular,sans-serif;
+
+}
+
+/* styling nav bar */
+nav{
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    height: 95px;
+    width: 100%;
+    background-color: transparent;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 0 50px;
+    flex-wrap: wrap;
+    transition: background-color 0.2s ease-in-out;
+}
+
+nav.scrolled {
+    background-color: #253177;
+
+}  
+
+.logo.scrolled {
+    color: #fff;
+}
+
+nav ul li a.scrolled  {
+    color: #f2f2f2;
+}   
+
+
+  nav .logo{
+    color: rgb(16, 22, 47);
+    transition: color 0.2s ease-in-out;
+    font-size: 35px;
+    font-weight: 600;   
+
+  }
+  nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    position: absolute;
+    right: 0;
+    top: 30%;
+  }
+
+  nav ul li{
+    margin: 0 30px;
+    position: relative;
+  }
+  
+  .search-form input[type="text"] {   /*attribute selector, using attribute to style, attribute = "value" */
+      padding: 5px;                   /*为指定的attribute加上css*/
+      border-radius: 5px;             /*exp: input[type="text"] targets all <input> elements that have a type attribute with a value of text.*/
+      border: none;
+      margin-right: 10px;
+      outline: none;  /* Remove the default blue outline */
+      margin-top: 5px;
+  }
+    
+  .search-form button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;    
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+  nav ul li a{
+    color: rgb(16, 22, 47);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+
+  nav .menu-btn i{
+    color: #fff;   
+    font-size: 22px;
+    cursor: pointer;
+    display: none;
+  }
+  
+nav input[type="checkbox"]{
+    display: none;
+}
+
+.layer {
+    width: 70px;
+    height: 70px;
+    transition: 0.3s;
+    margin-left: 10px;
+}
+
+.layer i{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 45%;
+    border: 1px solid var(--c);
+    border-radius: 6px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .text { 
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    width: 100%;
+    left: -30%;
+    text-align: center;
+    color: var(--c);        /* call var() to a customization --c */
+    transition: 0.3s;
+}
+
+nav ul a:hover .text {
+    opacity: 1;
+}
+
+
+nav li a:hover .layer {
+    transform: rotate(-35deg) skew(20deg);
+}
+
+nav li a:hover .layer i:nth-child(1) {
+    opacity: 0.2;
+    transform: translate(0,0);
+}
+
+nav li a:hover .layer i:nth-child(2) {
+    opacity: 0.4;
+    transform: translate(5px,-5px);
+}
+
+nav li a:hover .layer i:nth-child(3) {
+    opacity: 0.6;
+    transform: translate(10px,-10px);
+}
+
+nav li a:hover .layer i:nth-child(4) {
+    opacity: 0.8;
+    transform: translate(15px,-15px);
+}
+
+nav li a:hover .layer i:nth-child(5) {
+    opacity: 1.0;
+    transform: translate(20px,-20px);
+}
+
+/* customize --c */
+nav li:nth-child(1) .layer i, li:nth-child(1) .text {
+    --c: #12b7f5;
+}
+
+nav li:nth-child(2) .layer i, li:nth-child(2) .text {
+    --c: #2aae67;
+}
+
+
+nav li:nth-child(3) .layer i, li:nth-child(3) .text {
+    --c: #e79115;
+}
+
+
+nav li:nth-child(4) .layer i, li:nth-child(4) .text {
+    --c: #2075fd;
+    
+}
+
+
+nav li:nth-child(5) .layer i, li:nth-child(5) .text {
+    --c: #2d8dc5;
+}
+
+nav li:nth-child(7) .layer i, li:nth-child(7) .text {
+    --c: rgb(198, 56, 56);
+}
+
+
+/* styling login form */
+.wrap {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to left top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+
+.wrap form {
+    width: 600px;
+    display: flex;
+    height: 380px;
+    background: white;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    overflow: hidden;       /* 超出部分剪掉 */
+}
+
+.left {
+    width: 350px;
+    height: 380px;
+}
+
+.left video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.right {
+    width: 250px;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.right-con {    
+    width: 80%;
+    height: 100%;
+}
+
+h1 {
+    font-size: 24px;
+    color: #70b4e3;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+
+.right label {
+    font-size: 14px;
+    color: #70b4e3;
+    padding-bottom: 10px;
+}
+
+.text {
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #70b4e3;
+    outline: none;
+    color: #70b4e3;
+}
+
+.btn {
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 10px;
+    background-image: linear-gradient(to left top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+
+.signup {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+    margin-right: 30px;
+}
+
+.signup-icon {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.signup-icon a:hover {
+    filter: brightness(1.2);
+}
+
+.last:hover {
+    color: #fc00ff;
+    transition: 0.3s ease;
+}
+
+.last > small {
+    font-size: 12px;
+}
+
+.signup-icon a{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.signup-icon a:nth-child(1) {
+    background-color: #3b5998;
+}
+
+.signup-icon a:nth-child(2) {
+    background-color: #1da1f2;
+}
+
+.signup-icon a:nth-child(3) {
+    background-color: #e4405f;
+}
+
+.signup-icon a i {
+    line-height: 40px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.signup-icon a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+

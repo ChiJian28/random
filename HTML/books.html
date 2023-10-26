@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Page</title>
+    <link rel="stylesheet" href="books.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  <!-- 调用外接icon -->
+    <link rel="stylesheet" href="resp-books.css">
+</head>
+<body>
+	<!-- create header with nav bar -->
+	<header> 
+		<nav id="navbar">
+			<div class="logo" id="Logo">
+				PlusAca.
+			</div>
+			<input type="checkbox" id="click">
+			<label for="click" class="menu-btn">
+				<i class="fa fa-bars" style="font-size:24px"></i>
+			</label>
+			<ul>
+				<li>
+					<a href="about.html" id="Icon">
+						<div class="layer">
+							<i></i>
+							<i></i>
+							<i></i>
+							<i></i>
+							<i class="fa fa-university" aria-hidden="true"></i>
+						</div>
+						<div class="text">About</div>
+					</a>
+				</li>
+				<li>
+					<a href="../index.html" id="Icon2">
+						<div class="layer">
+							<i></i>
+							<i></i>
+							<i></i>
+							<i></i>
+							<i class="fa fa-home" aria-hidden="true"></i>
+						</div>
+						<div class="text">Home</div>
+					</a>
+				</li>
+				<li>
+					<a href="course.html" id="Icon3">
+						<div class="layer">
+							<i></i>
+							<i></i>
+							<i></i>
+							<i></i>
+							<i class="fa fa-keyboard-o" aria-hidden="true"></i>
+						</div>
+						<div class="text">Course</div>
+					</a>
+				</li>
+				<li>
+					<a href="contact.html" id="Icon4">
+						<div class="layer">
+							<i></i>
+							<i></i>
+							<i></i>
+							<i></i>
+							<i class="fa fa-comment" aria-hidden="true"></i>
+						</div>
+						<div class="text">Contact</div>
+					</a>
+				</li>
+				<li>
+					<a href="pricing.html" id="Icon5">
+						<div class="layer">
+							<i></i>
+							<i></i>
+							<i></i>
+							<i></i>
+							<i class="fa fa-money" aria-hidden="true"></i>
+						</div>
+						<div class="text">Pricing</div>
+					</a>
+				</li>
+				<li style="margin-right: 15px;">
+					<form class="search-form">
+						<button type="submit"><i class="fa fa-search"></i></button>
+						<input type="text" id="search-input">
+					</form>
+				</li>
+					<li>
+					<a href="login.html" id="Icon6">
+						<div class="layer">
+							<i></i>
+							<i></i>
+							<i></i>
+							<i></i>
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</div>
+						<div class="text">Login</div>
+					</a>
+				</li>
+			</ul>
+			<!-- create nav bar background-color changes function -->
+			<script>
+				window.addEventListener('scroll', function() {
+					var icon = document.getElementById('Icon');
+					var icon2 = document.getElementById('Icon2');
+					var icon3 = document.getElementById('Icon3');
+					var icon4 = document.getElementById('Icon4');
+					var icon5 = document.getElementById('Icon5');
+					var icon6 = document.getElementById('Icon6');
+					var logo = document.getElementById('Logo');
+					var tutor = document.getElementById('Tutor');
+					var navbar = document.getElementById('navbar');
+						if (window.scrollY > 0) {
+							navbar.classList.add('scrolled');
+							logo.classList.add('scrolled');
+							icon.classList.add('scrolled');
+							icon2.classList.add('scrolled');
+							icon3.classList.add('scrolled');
+							icon4.classList.add('scrolled');
+							icon5.classList.add('scrolled');
+							icon6.classList.add('scrolled');
+							tutor.classList.add('scrolled');
+						} else {
+							navbar.classList.remove('scrolled');
+							logo.classList.remove('scrolled');
+							icon.classList.remove('scrolled');
+							icon2.classList.remove('scrolled');
+							icon3.classList.remove('scrolled');
+							icon4.classList.remove('scrolled');
+							icon5.classList.remove('scrolled');
+							icon6.classList.remove('scrolled');
+							tutor.classList.remove('scrolled');
+						}
+						});
+					
+			</script>
+			<a href="payment.html" class="payment">
+				<div class="icon-badge">
+					<i class="fa fa-shopping-cart" style="font-size:24px; color: #504e54;"></i>
+					<span class="badge">0</span>
+				</div>
+			</a>
+		</nav>
+		<!-- search function -->
+		<script>
+			const searchInput = document.getElementById('search-input');
+			const dropdown = document.createElement('div');
+			dropdown.id = 'myDropdown';
+			searchInput.parentNode.insertBefore(dropdown, searchInput.nextSibling);
+			
+			// Add an event listener to the search input for keyup events
+				searchInput.addEventListener('keyup', function() {
+			// Get the search term and convert it to lowercase
+			const search = searchInput.value.toLowerCase();
+
+			// Define an array of search results
+			const results = [
+			{ title: 'Home page', url: '../index.html' },
+			{ title: 'About page', url: 'about.html' },
+			{ title: 'Contact page', url: 'contact.html' },
+			{ title: 'Login page', url: 'login.html' },
+			{ title: 'Pricing page', url: 'pricing.html' },
+			{ title: 'Course page', url: 'course.html' },
+			{ title: 'Tutor page', url: 'tutor.html' },
+			{ title: 'Payment page', url: 'payment.html' },
+			{ title: 'Book page', url: 'books.html' }
+			];
+
+			// Filter the results based on the search term
+			const filteredResults = results.filter(function(result) {
+			return result.title.toLowerCase().includes(search);
+			});
+
+			// Display the search results in the dropdown
+			dropdown.innerHTML = "";
+			filteredResults.forEach(function(result) {
+			const link = document.createElement('a');
+			link.href = result.url;
+			link.textContent = result.title;
+			dropdown.appendChild(link);
+			});
+
+			// Show or hide the dropdown based on the number of search results
+			if (filteredResults.length > 0) {
+			dropdown.classList.add('show');
+			} else {
+			dropdown.classList.remove('show');
+			}
+		});
+
+			// Styling for the dropdown
+			const dropdownStyle = `
+				#myDropdown {
+				position: absolute;
+				background-color: #fff;
+				z-index: 1;
+				width: 100%;
+				}
+				#myDropdown.show {
+				display: block;
+				}
+				#myDropdown a {
+				color: #000;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+				font-size: 14px;
+				}
+				#myDropdown a:hover {
+				background-color: #f2f2f2;
+				}
+			`;
+			
+			// Create a style element and append the dropdown style to it
+			const style = document.createElement('style');
+			style.innerHTML = dropdownStyle;
+			document.head.appendChild(style);
+		</script>
+    </header>
+	<!-- create main body -->
+	<main>
+		<!-- rotate books -->
+		<div class="green">
+			<div class="subt">
+				<p>Free Shipping on Orders of RM160 or More</p>
+			</div>
+			<div class="rotate-books">
+				<div class="rotbook">
+					<img src="cs1.jpeg" alt="cs books">
+					<img src="cs2.webp" alt="cs books">
+					<img src="cs3.jpeg" alt="cs books">
+					<img src="cs4.jpeg" alt="cs books">
+					<img src="cs5.jpeg" alt="cs books">
+					<img src="cs6.jpg" alt="cs books">
+				</div>
+				<div class="p-a">
+					<h1>P&A Top 100: Book Bestsellers</h1>
+					<small>Discover the books that are trending right now.</small>
+				</div>
+			</div>
+		</div>
+		<!-- sell books list -->
+		<div class="container">
+			<!-- list button -->
+			<div class="button-grp">
+				<h2>CUSTOMER FAVORITES</h2>
+				<a href="https://books.google.com.my/">P&A Top 100</a>
+				<a href="https://books.google.com.my/">New Releases</a>
+				<a href="https://books.google.com.my/">Coming Soon</a>
+				<a href="https://books.google.com.my/">Books by Subject</a>
+				<h2>SPECIAL VALUES</h2>
+				<a href="https://books.google.com.my/">Buy 1, Get 1 50% Off</a>
+				<a href="https://books.google.com.my/">Bestsellers 30% Off</a>
+				<a href="https://books.google.com.my/">Up to 30% Off Pre-Orders</a>
+				<a href="https://books.google.com.my/">P&A Collectible Editions</a>
+				<a href="https://books.google.com.my/">Coupons & Deals</a>
+				<h2>SUBJECTS</h2>
+				<button onclick="showPage(1)">DSA</button>
+				<button onclick="showPage(2)">System Design</button>
+				<button onclick="showPage(3)">AI</button>
+				<button onclick="showPage(4)">Data Science</button>
+				<button onclick="showPage(5)">Web Development</button>
+				<button onclick="showPage(6)">Software Engineering</button>
+			</div>
+			<!-- click shown function -->
+			<script>
+				function showPage(pageNumber) {
+					var pages = document.getElementsByClassName('page');
+					for (var i = 0; i < pages.length; i++) {
+						pages[i].classList.remove('active'); 	//remove active class
+					}
+					document.getElementById('page-' + pageNumber).classList.add('active');  //add active class
+				}
+			</script>
+			<div class="cards">
+				<small><i class="fa fa-map-marker" style="font-size:14px"></i>&emsp;Get it today with Buy Online, Pick up in Store&emsp;<a href="https://www.findmystore.io/">Find My Store</a></small>
+				<div id="page-1" class="page active">
+					<figure>
+						<img src="dsa1.jpeg" alt="Algo books" height="250" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Introduction to Algorithms, third edition</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Thomas H. Cormen,</a></span>
+								<span><a href="https://books.google.com.my/">Charles E.Leiserson,</a></span>
+								<span><a href="https://books.google.com.my/">Ronald L. Rivest ·</a></span>
+								<span>2009</span>
+							</p>
+							<p class="desc">The book covers a broad range of algorithmic topics, including sorting and searching algorithms, graph algorithms, dynamic programming, and computational geometry. </p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small></span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures" style="margin-top: 100px;">
+						<img src="dsa2.jpg" alt="DSA books" height="330" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Introduction to Data Structure and Algorithms</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Michael T. Goodrich,</a></span>
+								<span><a href="https://books.google.com.my/">Roberto Tamassia, </a></span>
+								<span><a href="https://books.google.com.my/">Michael H. Goldwasser ·</a></span>
+								<span>2013</span>
+							</p>
+							<p class="desc">This book aim to provide a practical and modern approach to data structures and algorithms that will be useful for computer science students and professionals alike.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>					</span>
+							<a href="https://books.google.com.my/" class="pre-order" style="top: 73%">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="dsa3.jpeg" alt="" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Data Structures and Algorithms Made Easy</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Narasimha Karumanchi</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book presents different data structures and algorithms, including sorting, searching, graph algorithms, and dynamic programming, along with their implementation using a variety of programming languages. This book is suitable for beginners and advanced learners alike.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small></span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="dsa4.jpg" alt="Algo books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>The Algorithm Design Manual</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Steven S. Skiena</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">A practical and intuitive guide to algorithm design and analysis, with real-world examples and practical tips for problem-solving.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>					</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="dsa5.jpg" alt="Algo books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Algorithms, 4th Edition</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Robert Sedgewick, </a></span>
+								<span><a href="https://books.google.com.my/">Kevin Wayne</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">A modern and practical introduction to algorithms and data structures, with Java implementations and real-world examples.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>					</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<!-- create pages -->
+					<div class="other-page">
+						<p>&lt;&emsp;1&nbsp;&nbsp;<a href="https://books.google.com.my/">2</a>&nbsp;&nbsp;<a href="https://books.google.com.my/">3</a>&nbsp;&nbsp;...&nbsp;&nbsp;<a href="https://books.google.com.my/">5</a>&emsp;></p>
+					</div>
+					<div class="best-books">
+						<p>
+							Looking for what book to read next? Explore the Plus Academy Top 100 Best Sellers list to discover all the current top books. Browse a large variety of books on topics you love or the best new books to discover! Whether you're interested in what fields, discover top books to read and recommended books from the book experts at P&A. You can also check out our list of the <a href="#">best books of 2023</a>!
+						</p>
+						<h2>15 Best CS Books to Read in 2023</h2>
+						<ul>
+							<li><a href="https://books.google.com.my/">Designing Data-Intensive Applications</a> by Martin Kleppmann</li>
+							<li><a href="https://books.google.com.my/">Algorithms of the Intelligent Web</a> by Haralambos Marmanis and Dmitry Babenko</li>
+							<li><a href="https://books.google.com.my/">Computer Networking: A Top-Down Approach</a> by James F. Kurose and Keith W. Ross</li>
+							<li><a href="https://books.google.com.my/">Operating System Concepts</a> by Abraham Silberschatz, Greg Gagne, and Peter B. Galvin</li>
+							<li><a href="https://books.google.com.my/">Clean Code: A Handbook of Agile Software Craftsmanship</a> by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein</li>
+							<li><a href="https://books.google.com.my/">The Elements of Computing Systems: Building a Modern Computer from First Principles</a> by Robert C. Martin</li>
+							<li><a href="https://books.google.com.my/">Computer Architecture: A Quantitative Approach</a> by Noam Nisan and Shimon Schocken</li>
+							<li><a href="https://books.google.com.my/">Introduction to Algorithms</a> by John L. Hennessy and David A. Patterson</li>
+							<li><a href="https://books.google.com.my/">Artificial Intelligence: A Modern Approach</a> by Stuart Russell and Peter Norvig</li>
+							<li><a href="https://books.google.com.my/">Cracking the Coding Interview: 189 Programming Questions and Solutions</a >by Gayle Laakmann McDowell</li>
+							<li><a href="https://books.google.com.my/">Programming Language Pragmatics</a> by Michael L. Scott</li>
+							<li><a href="https://books.google.com.my/">Code Complete: A Practical Handbook of Software Construction</a> by Steve McConnell</li>
+							<li><a href="https://books.google.com.my/">Database Systems: The Complete Book</a> by Hector Garcia-Molina, Jeffrey D. Ullman, and Jennifer Widom</li>
+							<li><a href="https://books.google.com.my/">Computer Science Distilled: Learn the Art of Solving Computational Problems</a> by Wladston Ferreira Filho and Raimondo Pictet</li>
+							<li><a href="https://books.google.com.my/">The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win</a> by Gene Kim, Kevin Behr, and George Spafford</li>
+						</ul>
+					</div>
+				</div>
+				<div id="page-2" class="page">
+					<figure>
+						<img src="systemd1.jpeg" alt="System Design books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Designing Data-Intensive Applications</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Martin Kleppmann</a></span>
+								<span>2009</span>
+							</p>
+							<p class="desc">This book covers various aspects of system design, including storage systems, distributed systems, and stream processing.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures" style="margin-top: 100px;">
+						<img src="systemd2.jpeg" alt="System Design books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Scalability Rules: 50 Principles for Scaling Web Sites</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Martin L. Abbott, </a></span>
+								<span><a href="https://books.google.com.my/">Michael T. Fisher</a></span>
+								<span>2013</span>
+							</p>
+							<p class="desc">This book covers the principles of scalability and provides guidelines for designing and building scalable web applications.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order" style="top: 73%">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="systemd3.jpeg" alt="System Design books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Building Microservices</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Sam Newman</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book covers the principles of microservices architecture, including designing, developing, and deploying microservices.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="systemd4.jpg" alt="System Design books" height="330" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Release It!: Design and Deploy Production-Ready Software</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Michael T. Nygard </a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book covers the principles of designing and deploying production-ready software, including handling failures, monitoring, and debugging.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="systemd5.jpg" alt="System Design books" height="330" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Domain-Driven Design: Tackling Complexity in the Heart of Software</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Eric Evans</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book covers the principles of domain-driven design, including identifying and modeling business domains.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>					</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<!-- create pages -->
+					<div class="other-page">
+						<p>&lt;&emsp;1&nbsp;&nbsp;<a href="https://books.google.com.my/">2</a>&nbsp;&nbsp;<a href="https://books.google.com.my/">3</a>&nbsp;&nbsp;...&nbsp;&nbsp;<a href="https://books.google.com.my/">5</a>&emsp;></p>
+					</div>
+					<div class="best-books">
+						<p>
+							Looking for what book to read next? Explore the Plus Academy Top 100 Best Sellers list to discover all the current top books. Browse a large variety of books on topics you love or the best new books to discover! Whether you're interested in what fields, discover top books to read and recommended books from the book experts at P&A. You can also check out our list of the <a href="#">best books of 2023</a>!
+						</p>
+						<h2>15 Best CS Books to Read in 2023</h2>
+						<ul>
+							<li><a href="https://books.google.com.my/">Designing Data-Intensive Applications</a>by Martin Kleppmann</li>
+							<li><a href="https://books.google.com.my/">Algorithms of the Intelligent Web</a>by Haralambos Marmanis and Dmitry Babenko</li>
+							<li><a href="https://books.google.com.my/">Computer Networking: A Top-Down Approach</a>by James F. Kurose and Keith W. Ross</li>
+							<li><a href="https://books.google.com.my/">Operating System Concepts</a>by Abraham Silberschatz, Greg Gagne, and Peter B. Galvin</li>
+							<li><a href="https://books.google.com.my/">Clean Code: A Handbook of Agile Software Craftsmanship</a>by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein</li>
+							<li><a href="https://books.google.com.my/">The Elements of Computing Systems: Building a Modern Computer from First Principles</a>by Robert C. Martin</li>
+							<li><a href="https://books.google.com.my/">Computer Architecture: A Quantitative Approach</a>by Noam Nisan and Shimon Schocken</li>
+							<li><a href="https://books.google.com.my/">Introduction to Algorithms</a>by John L. Hennessy and David A. Patterson</li>
+							<li><a href="https://books.google.com.my/">Artificial Intelligence: A Modern Approach</a>by Stuart Russell and Peter Norvig</li>
+							<li><a href="https://books.google.com.my/">Cracking the Coding Interview: 189 Programming Questions and Solutions</a>by Gayle Laakmann McDowell</li>
+							<li><a href="https://books.google.com.my/">Programming Language Pragmatics</a>by Michael L. Scott</li>
+							<li><a href="https://books.google.com.my/">Code Complete: A Practical Handbook of Software Construction</a>by Steve McConnell</li>
+							<li><a href="https://books.google.com.my/">Database Systems: The Complete Book</a>by Hector Garcia-Molina, Jeffrey D. Ullman, and Jennifer Widom</li>
+							<li><a href="https://books.google.com.my/">Computer Science Distilled: Learn the Art of Solving Computational Problems</a>by Wladston Ferreira Filho and Raimondo Pictet</li>
+							<li><a href="https://books.google.com.my/">The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win</a>by Gene Kim, Kevin Behr, and George Spafford</li>
+						</ul>
+					</div>
+				</div>
+				<div id="page-3" class="page">
+					<figure>
+						<img src="ai1.jpg" alt="AI Books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Artificial Intelligence: A Modern Approach</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Stuart Russell, </a></span>
+								<span><a href="https://books.google.com.my/">Peter Norvig</a></span>
+								<span>2009</span>
+							</p>
+							<p class="desc">This book is a comprehensive introduction to the principles of AI, covering topics such as problem-solving, knowledge representation, and learning.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small></span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures" style="margin-top: 100px;">
+						<img src="ai2.jpeg" alt="AI Books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Deep Learning</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="">Ian Goodfellow, </a></span>
+								<span><a href="">Yoshua Bengio, </a></span>
+								<span><a href="">Aaron Courville</a></span>
+								<span>2013</span>
+							</p>
+							<p class="desc">This book provides a detailed introduction to deep learning, including topics such as convolutional neural networks, recurrent neural networks, and generative models.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order" style="top: 73%">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="ai3.jpeg" alt="AI Books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Aurélien Géron</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book provides a practical introduction to machine learning, including topics such as regression, classification, clustering, and neural networks.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="ai4.jpeg" alt="AI Books" height="330" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Python Machine Learning</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Sebastian Raschka, </a></span>
+								<span><a href="https://books.google.com.my/">Vahid Mirjalili </a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book provides a hands-on introduction to machine learning using Python, covering topics such as classification, clustering, and deep learning.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="ai5.jpeg" alt="AI Books" height="330" width="250">
+						<figcaption>
+							<a href="#">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Reinforcement Learning: An Introduction</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Richard S. Sutton, </a></span>
+								<span><a href="https://books.google.com.my/">Andrew G. Barto</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book provides an introduction to reinforcement learning, including topics such as value-based methods, policy-based methods, and deep reinforcement learning.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>					</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<!-- create pages -->
+					<div class="other-page">
+						<p>&lt;&emsp;1&nbsp;&nbsp;<a href="https://books.google.com.my/">2</a>&nbsp;&nbsp;<a href="https://books.google.com.my/">3</a>&nbsp;&nbsp;...&nbsp;&nbsp;<a href="https://books.google.com.my/">5</a>&emsp;></p>
+					</div>
+					<div class="best-books">
+						<p>
+							Looking for what book to read next? Explore the Plus Academy Top 100 Best Sellers list to discover all the current top books. Browse a large variety of books on topics you love or the best new books to discover! Whether you're interested in what fields, discover top books to read and recommended books from the book experts at P&A. You can also check out our list of the <a href="#">best books of 2023</a>!
+						</p>
+						<h2>15 Best CS Books to Read in 2023</h2>
+						<ul>
+							<li><a href="https://books.google.com.my/">Designing Data-Intensive Applications</a>by Martin Kleppmann</li>
+							<li><a href="https://books.google.com.my/">Algorithms of the Intelligent Web</a>by Haralambos Marmanis and Dmitry Babenko</li>
+							<li><a href="https://books.google.com.my/">Computer Networking: A Top-Down Approach</a>by James F. Kurose and Keith W. Ross</li>
+							<li><a href="https://books.google.com.my/">Operating System Concepts</a>by Abraham Silberschatz, Greg Gagne, and Peter B. Galvin</li>
+							<li><a href="https://books.google.com.my/">Clean Code: A Handbook of Agile Software Craftsmanship</a>by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein</li>
+							<li><a href="https://books.google.com.my/">The Elements of Computing Systems: Building a Modern Computer from First Principles</a>by Robert C. Martin</li>
+							<li><a href="https://books.google.com.my/">Computer Architecture: A Quantitative Approach</a>by Noam Nisan and Shimon Schocken</li>
+							<li><a href="https://books.google.com.my/">Introduction to Algorithms</a>by John L. Hennessy and David A. Patterson</li>
+							<li><a href="https://books.google.com.my/">Artificial Intelligence: A Modern Approach</a>by Stuart Russell and Peter Norvig</li>
+							<li><a href="https://books.google.com.my/">Cracking the Coding Interview: 189 Programming Questions and Solutions</a>by Gayle Laakmann McDowell</li>
+							<li><a href="https://books.google.com.my/">Programming Language Pragmatics</a>by Michael L. Scott</li>
+							<li><a href="https://books.google.com.my/">Code Complete: A Practical Handbook of Software Construction</a>by Steve McConnell</li>
+							<li><a href="https://books.google.com.my/">Database Systems: The Complete Book</a>by Hector Garcia-Molina, Jeffrey D. Ullman, and Jennifer Widom</li>
+							<li><a href="https://books.google.com.my/">Computer Science Distilled: Learn the Art of Solving Computational Problems</a>by Wladston Ferreira Filho and Raimondo Pictet</li>
+							<li><a href="https://books.google.com.my/">The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win</a>by Gene Kim, Kevin Behr, and George Spafford</li>
+						</ul>
+					</div>
+				</div>
+				<div id="page-4" class="page">
+					<figure>
+						<img src="ds1.jpg" alt="Data Science Books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Python for Data Analysis</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Wes McKinney</a></span>
+								<span>2009</span>
+							</p>
+							<p class="desc">This book teaches data analysis using the Python programming language, covering topics such as data manipulation, data cleaning, and data visualization.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small></span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures" style="margin-top: 100px;">
+						<img src="/images/books_image/ds2.jpeg" alt="Data Science Books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Data Science from Scratch</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Joel Grus</a></span>
+								<span>2013</span>
+							</p>
+							<p class="desc">This book provides an introduction to data science from the ground up, covering topics such as probability, statistics, and machine learning.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>					</span>
+							<a href="https://books.google.com.my/" class="pre-order" style="top: 73%">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="ds3.jpg" alt="Data Science Books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Data Science for Business</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Foster Provost, </a></span>
+								<span><a href="https://books.google.com.my/">Tom Fawcett</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book provides a practical guide to using data science in business, covering topics such as data mining, predictive modeling, and decision-making.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="ds4.jpeg" alt="Data Science Books" height="330" width="250">
+						<figcaption>
+							<a href="#https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>The Elements of Statistical Learning</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="#https://books.google.com.my/">STrevor Hastie, </a></span>
+								<span><a href="#https://books.google.com.my/">Robert Tibshirani, </a></span>
+								<span><a href="#https://books.google.com.my/">erome Friedman</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book provides a comprehensive introduction to statistical learning, covering topics such as linear regression, classification, and clustering.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="#https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="#https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="#https://books.google.com.my/">Hardcover, </a><a href="#https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="ds5.jpeg" alt="Data Science Books" height="330" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Data Smart: Using Data Science to Transform Information into Insight</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">John W. Foreman</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book provides a practical guide to using data science to solve real-world problems, covering topics such as data exploration, regression, and decision trees.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<!-- create pages -->
+					<div class="other-page">
+						<p>&lt;&emsp;1&nbsp;&nbsp;<a href="https://books.google.com.my/">2</a>&nbsp;&nbsp;<a href="https://books.google.com.my/">3</a>&nbsp;&nbsp;...&nbsp;&nbsp;<a href="https://books.google.com.my/">5</a>&emsp;></p>
+					</div>
+					<div class="best-books">
+						<p>
+							Looking for what book to read next? Explore the Plus Academy Top 100 Best Sellers list to discover all the current top books. Browse a large variety of books on topics you love or the best new books to discover! Whether you're interested in what fields, discover top books to read and recommended books from the book experts at P&A. You can also check out our list of the <a href="#">best books of 2023</a>!
+						</p>
+						<h2>15 Best CS Books to Read in 2023</h2>
+						<ul>
+							<li><a href="https://books.google.com.my/">Designing Data-Intensive Applications</a>by Martin Kleppmann</li>
+							<li><a href="https://books.google.com.my/">Algorithms of the Intelligent Web</a>by Haralambos Marmanis and Dmitry Babenko</li>
+							<li><a href="https://books.google.com.my/">Computer Networking: A Top-Down Approach</a>by James F. Kurose and Keith W. Ross</li>
+							<li><a href="https://books.google.com.my/">Operating System Concepts</a>by Abraham Silberschatz, Greg Gagne, and Peter B. Galvin</li>
+							<li><a href="https://books.google.com.my/">Clean Code: A Handbook of Agile Software Craftsmanship</a>by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein</li>
+							<li><a href="https://books.google.com.my/">The Elements of Computing Systems: Building a Modern Computer from First Principles</a>by Robert C. Martin</li>
+							<li><a href="https://books.google.com.my/">Computer Architecture: A Quantitative Approach</a>by Noam Nisan and Shimon Schocken</li>
+							<li><a href="https://books.google.com.my/">Introduction to Algorithms</a>by John L. Hennessy and David A. Patterson</li>
+							<li><a href="https://books.google.com.my/">Artificial Intelligence: A Modern Approach</a>by Stuart Russell and Peter Norvig</li>
+							<li><a href="https://books.google.com.my/">Cracking the Coding Interview: 189 Programming Questions and Solutions</a>by Gayle Laakmann McDowell</li>
+							<li><a href="https://books.google.com.my/">Programming Language Pragmatics</a>by Michael L. Scott</li>
+							<li><a href="https://books.google.com.my/">Code Complete: A Practical Handbook of Software Construction</a>by Steve McConnell</li>
+							<li><a href="https://books.google.com.my/">Database Systems: The Complete Book</a>by Hector Garcia-Molina, Jeffrey D. Ullman, and Jennifer Widom</li>
+							<li><a href="https://books.google.com.my/">Computer Science Distilled: Learn the Art of Solving Computational Problems</a>by Wladston Ferreira Filho and Raimondo Pictet</li>
+							<li><a href="https://books.google.com.my/">The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win</a>by Gene Kim, Kevin Behr, and George Spafford</li>
+						</ul>
+					</div>
+				</div>
+				<div id="page-5" class="page">
+					<figure>
+						<img src="web1.jpeg" alt="Web Dev Books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Eloquent JavaScript: A Modern Introduction to Programming</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Marijn Haverbeke</a></span>
+								<span>2009</span>
+							</p>
+							<p class="desc">This book teaches JavaScript programming, covering topics such as data structures, algorithms, and functional programming.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small></span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures" style="margin-top: 100px;">
+						<img src="web2.jpg" alt="Web Dev Books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Learning PHP, MySQL & JavaScript: With jQuery, CSS & HTML5</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Robin Nixon</a></span>
+								<span>2013</span>
+							</p>
+							<p class="desc">This book teaches PHP, MySQL, and JavaScript, covering topics such as database design, server-side scripting, and client-side scripting.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>					</span>
+							<a href="https://books.google.com.my/" class="pre-order" style="top: 73%">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="web3.jpeg" alt="Web Dev Books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Web Development and Design Foundations with HTML5</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Terry Felke-Morris</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book provides a broad introduction to web development, covering topics such as web design principles, HTML5, and CSS3.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>					</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="web4.jpg" alt="Web Dev Books" height="330" width="250">
+						<figcaption>
+							<a href="#https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Designing Web Interfaces: Principles and Patterns for Rich Interactions</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="#https://books.google.com.my/">Bill Scott, </a></span>
+								<span><a href="#https://books.google.com.my/">Theresa Neil</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book focuses on web design principles and user interface patterns, covering topics such as navigation, layout, and user experience design.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="#https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="#https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="#https://books.google.com.my/">Hardcover, </a><a href="#https://books.google.com.my/">Paperback,</a><a href="#https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="web5.jpeg" alt="Web Dev Books" height="330" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Don't Make Me Think: A Common Sense Approach to Web Usability</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Steve Krug</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">This book provides a practical guide to web usability, covering topics such as navigation design, page layout, and user testing.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<!-- create pages -->
+					<div class="other-page">
+						<p>&lt;&emsp;1&nbsp;&nbsp;<a href="#">2</a>&nbsp;&nbsp;<a href="#">3</a>&nbsp;&nbsp;...&nbsp;&nbsp;<a href="#">5</a>&emsp;></p>
+					</div>
+					<div class="best-books">
+						<p>
+							Looking for what book to read next? Explore the Plus Academy Top 100 Best Sellers list to discover all the current top books. Browse a large variety of books on topics you love or the best new books to discover! Whether you're interested in what fields, discover top books to read and recommended books from the book experts at P&A. You can also check out our list of the <a href="#">best books of 2023</a>!
+						</p>
+						<h2>15 Best CS Books to Read in 2023</h2>
+						<ul>
+							<li><a href="https://books.google.com.my/">Designing Data-Intensive Applications</a>by Martin Kleppmann</li>
+							<li><a href="https://books.google.com.my/">Algorithms of the Intelligent Web</a>by Haralambos Marmanis and Dmitry Babenko</li>
+							<li><a href="https://books.google.com.my/">Computer Networking: A Top-Down Approach</a>by James F. Kurose and Keith W. Ross</li>
+							<li><a href="https://books.google.com.my/">Operating System Concepts</a>by Abraham Silberschatz, Greg Gagne, and Peter B. Galvin</li>
+							<li><a href="https://books.google.com.my/">Clean Code: A Handbook of Agile Software Craftsmanship</a>by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein</li>
+							<li><a href="https://books.google.com.my/">The Elements of Computing Systems: Building a Modern Computer from First Principles</a>by Robert C. Martin</li>
+							<li><a href="https://books.google.com.my/">Computer Architecture: A Quantitative Approach</a>by Noam Nisan and Shimon Schocken</li>
+							<li><a href="https://books.google.com.my/">Introduction to Algorithms</a>by John L. Hennessy and David A. Patterson</li>
+							<li><a href="https://books.google.com.my/">Artificial Intelligence: A Modern Approach</a>by Stuart Russell and Peter Norvig</li>
+							<li><a href="https://books.google.com.my/">Cracking the Coding Interview: 189 Programming Questions and Solutions</a>by Gayle Laakmann McDowell</li>
+							<li><a href="https://books.google.com.my/">Programming Language Pragmatics</a>by Michael L. Scott</li>
+							<li><a href="https://books.google.com.my/">Code Complete: A Practical Handbook of Software Construction</a>by Steve McConnell</li>
+							<li><a href="https://books.google.com.my/">Database Systems: The Complete Book</a>by Hector Garcia-Molina, Jeffrey D. Ullman, and Jennifer Widom</li>
+							<li><a href="https://books.google.com.my/">Computer Science Distilled: Learn the Art of Solving Computational Problems</a>by Wladston Ferreira Filho and Raimondo Pictet</li>
+							<li><a href="https://books.google.com.my/">The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win</a>by Gene Kim, Kevin Behr, and George Spafford</li>
+						</ul>
+					</div>
+				</div>
+				<div id="page-6" class="page">
+					<figure>
+						<img src="se1.jpg" alt="Software Engineering Books" height="350" width="300">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Code Complete</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Steve McConnell</a></span>
+								<span>2009</span>
+							</p>
+							<p class="desc">A comprehensive guide to software development that covers everything from coding practices to project management.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small></span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures" style="margin-top: 100px;">
+						<img src="se2.jpeg" alt="Software Engineering Books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>The Pragmatic Programmer</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Andrew Hunt, </a></span>
+								<span><a href="https://books.google.com.my/">David Thomas</a></span>
+								<span>2013</span>
+							</p>
+							<p class="desc">A collection of tips and tricks for becoming a more efficient and effective software developer.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>					</span>
+							<a href="https://books.google.com.my/" class="pre-order" style="top: 73%">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="se3.jpg" alt="Software Engineering Books" height="350" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Design Patterns: Elements of Reusable Object-Oriented Software</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Erich Gamma, </a></span>
+								<span><a href="https://books.google.com.my/">Richard Helm, </a></span>
+								<span><a href="https://books.google.com.my/">Ralph Johnson, </a></span>
+								<span><a href="https://books.google.com.my/">John Vlissides</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">A classic book that presents common software design patterns and their application in object-oriented programming.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>					</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="se4.jpg" alt="Software Engineering Books" height="330" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>The Mythical Man-Month</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Frederick P. Brooks Jr.</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">A classic book that discusses the challenges of managing large software development projects and how to address them.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<figure class="figures">
+						<img src="se5.jpg" alt="Software Engineering Books" height="330" width="250">
+						<figcaption>
+							<a href="https://books.google.com.my/">
+								<small>books.plusAcademy.com.my > books</small>
+								<h3>Refactoring: Improving the Design of Existing Code</h3>
+							</a> 
+							<br>
+							<p class="author">
+								<span><a href="https://books.google.com.my/">Martin Fowler</a></span>
+								<span>2011</span>
+							</p>
+							<p class="desc">A guide to improving code quality by refactoring existing code, covering techniques and best practices for identifying and fixing code smells.</p>
+							<table>
+								<tr>
+									<td><small>Format</small></td>
+									<td><small>PA.com</small></td>
+									<td><p>not display</p></td>
+								</tr>
+								<tr>
+									<td><small><a href="https://books.google.com.my/">Paperback</a></small></td>
+									<td><a href="https://books.google.com.my/" class="price-books">RM89.90</a></td>
+									<td><p>not display</p></td>
+								</tr>
+							</table>		
+							<br>	
+							<span><small>Also available as: <a href="https://books.google.com.my/">Hardcover, </a><a href="https://books.google.com.my/">Paperback,</a><a href="https://books.google.com.my/"> See All ></a></small>				</span>
+							<a href="https://books.google.com.my/" class="pre-order">PRE-ORDER</a>
+							<br>
+							<br>
+							<span class="pre-more"><i class="fa fa-book" style="color: #1A73E8;"></i>&nbsp;Preview</span>
+							<span class="pre-more"><i class="fa fa-bars" style="color: #1A73E8;"></i>&nbsp;More editions</span>
+						</figcaption>
+					</figure>
+					<!-- create pages -->
+					<div class="other-page">
+						<p>&lt;&emsp;1&nbsp;&nbsp;<a href="#">2</a>&nbsp;&nbsp;<a href="#">3</a>&nbsp;&nbsp;...&nbsp;&nbsp;<a href="#">5</a>&emsp;></p>
+					</div>
+					<div class="best-books">
+						<p>
+							Looking for what book to read next? Explore the Plus Academy Top 100 Best Sellers list to discover all the current top books. Browse a large variety of books on topics you love or the best new books to discover! Whether you're interested in what fields, discover top books to read and recommended books from the book experts at P&A. You can also check out our list of the <a href="#">best books of 2023</a>!
+						</p>
+						<h2>15 Best CS Books to Read in 2023</h2>
+						<ul>
+							<li><a href="https://books.google.com.my/">Designing Data-Intensive Applications</a>by Martin Kleppmann</li>
+							<li><a href="https://books.google.com.my/">Algorithms of the Intelligent Web</a>by Haralambos Marmanis and Dmitry Babenko</li>
+							<li><a href="https://books.google.com.my/">Computer Networking: A Top-Down Approach</a>by James F. Kurose and Keith W. Ross</li>
+							<li><a href="https://books.google.com.my/">Operating System Concepts</a>by Abraham Silberschatz, Greg Gagne, and Peter B. Galvin</li>
+							<li><a href="https://books.google.com.my/">Clean Code: A Handbook of Agile Software Craftsmanship</a>by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein</li>
+							<li><a href="https://books.google.com.my/">The Elements of Computing Systems: Building a Modern Computer from First Principles</a>by Robert C. Martin</li>
+							<li><a href="https://books.google.com.my/">Computer Architecture: A Quantitative Approach</a>by Noam Nisan and Shimon Schocken</li>
+							<li><a href="https://books.google.com.my/">Introduction to Algorithms</a>by John L. Hennessy and David A. Patterson</li>
+							<li><a href="https://books.google.com.my/">Artificial Intelligence: A Modern Approach</a>by Stuart Russell and Peter Norvig</li>
+							<li><a href="https://books.google.com.my/">Cracking the Coding Interview: 189 Programming Questions and Solutions</a>by Gayle Laakmann McDowell</li>
+							<li><a href="https://books.google.com.my/">Programming Language Pragmatics</a>by Michael L. Scott</li>
+							<li><a href="https://books.google.com.my/">Code Complete: A Practical Handbook of Software Construction</a>by Steve McConnell</li>
+							<li><a href="https://books.google.com.my/">Database Systems: The Complete Book</a>by Hector Garcia-Molina, Jeffrey D. Ullman, and Jennifer Widom</li>
+							<li><a href="https://books.google.com.my/">Computer Science Distilled: Learn the Art of Solving Computational Problems</a>by Wladston Ferreira Filho and Raimondo Pictet</li>
+							<li><a href="https://books.google.com.my/">The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win</a>by Gene Kim, Kevin Behr, and George Spafford</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- create footer -->
+	<footer>
+		<hr style="width: 90%;margin-left: 35px;">
+		<table>
+			<tr>
+				<th><p class="font-subt">P&A SERVICES</p></th>
+				<th><p class="font-subt">ABOUT US</p></th>
+				<th><p class="font-subt">QUICK HELP</p></th>
+				<th><p class="font-subt">SHOP BY CATEGORY</p></th>
+				<td><p class="font-subt">FOLLOW US</p></td>
+			</tr>
+			<tr>
+				<td><a href="https://books.google.com.my/">Publisher & Author Guidelines</a></td>
+				<td><a href="https://books.google.com.my/">About P&A</a></td>
+				<td><a href="https://books.google.com.my/">Help Center</a></td>
+				<td><a href="https://books.google.com.my/">Books</a></td>
+				<td>
+					<ul>
+						<li><a href="https://www.facebook.com"><i class="fa fa-facebook" style="font-size:24px;"></i></a></li>
+						<li><a href="https://www.twitter.com"><i class="fa fa-twitter" style="font-size:24px;"></i></a></li>
+						<li><a href="https://www.google.com"><i class="fa fa-google" style="font-size:24px;"></i></a></li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://books.google.com.my/">Bulk Order Discounts</a></td>
+				<td><a href="https://books.google.com.my/">Careers at P&A</a></td>
+				<td><a href="https://books.google.com.my/">Shipping & Returns</a></td>
+				<td><a href="https://books.google.com.my/">Audiobooks</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="https://books.google.com.my/">P&A Membership</a></td>
+				<td><a href="https://books.google.com.my/">Plus & Academy, Inc.</a></td>
+				<td><a href="https://books.google.com.my/">Order Status</a></td>
+				<td><a href="https://books.google.com.my/">eBooks</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="https://books.google.com.my/">B&N Bookfairs</a></td>
+				<td></td>
+				<td><a href="https://books.google.com.my/">Product Recalls</a></td>
+				<td><a href="https://books.google.com.my/">NOOK Tablets & eReaders</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><a href="https://books.google.com.my/">Corrections & Updates</a></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<hr style="width: 90%;margin-left: 35px;">
+		<ul class="term-use">
+			<li><small><a href="https://books.google.com.my/">Terms of Use</a></small></li>
+			<li><small><a href="https://books.google.com.my/">Copyright & Trademark</a></small></li>
+			<li><small><a href="https://books.google.com.my/">Privacy</a></small></li>
+			<li><small><a href="https://books.google.com.my/">Do Not Sell My Personal Information</a></small></li>
+			<li><small><a href="https://books.google.com.my/">Accessibility</a></small></li>
+			<li><small><a href="https://books.google.com.my/">Cookie Policy</a></small></li>
+		</ul>
+		<div class="wrapper">
+            <a class="cta" href="pricing.html">
+                <span>&lt;&lt;</span>
+            </a>
+        </div>
+	</footer>
+</body>
+</html>
+

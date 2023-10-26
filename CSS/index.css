@@ -1,0 +1,808 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {                     /*reset the default styles of HTML elements*/
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e2faff;
+    font-family: "Apercu",-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+}
+
+
+
+/* styling nav bar */
+nav{
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    height: 95px;
+    width: 100%;
+    background-color: transparent;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 0 50px;
+    flex-wrap: wrap;
+    transition: background-color 0.2s ease-in-out;
+}
+
+nav.scrolled {
+    background-color: #253177;
+
+}  
+
+.logo.scrolled {
+    color: #fff;
+}
+
+nav ul li a.scrolled  {
+    color: #f2f2f2;
+}   
+
+
+  nav .logo{
+    color: rgb(16, 22, 47);
+    transition: color 0.2s ease-in-out;
+    font-size: 35px;
+    font-weight: 600;   
+
+  }
+  nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    position: absolute;
+    left: 25%;
+    top: 30%;
+  }
+
+  nav ul li{
+    margin: 0 30px;
+    position: relative;
+  }
+  
+  .search-form input[type="text"] {   /*attribute selector, using attribute to style, attribute = "value" */
+      padding: 5px;                   /*为指定的attribute加上css*/
+      border-radius: 5px;             /*exp: input[type="text"] targets all <input> elements that have a type attribute with a value of text.*/
+      border: none;
+      margin-right: 10px;
+      outline: none;  /* Remove the default blue outline */
+      margin-top: 5px;
+  }
+    
+  .search-form button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;    
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+  nav ul li a{
+    color: rgb(16, 22, 47);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  nav .menu-btn i{
+    color: #fff;   
+    font-size: 22px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  input[type="checkbox"]{
+    display: none;
+  }
+
+.layer {
+    width: 70px;
+    height: 70px;
+    transition: 0.3s;
+    margin-left: 10px;
+}
+
+.layer i{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 45%;
+    border: 1px solid var(--c);
+    border-radius: 6px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .text { 
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    width: 100%;
+    left: -30%;
+    text-align: center;
+    color: var(--c);        /* call var() to a customization --c */
+    transition: 0.3s;
+}
+
+nav ul a:hover .text {
+    opacity: 1;
+}
+
+
+nav li a:hover .layer {
+    transform: rotate(-35deg) skew(20deg);
+}
+
+nav li a:hover .layer i:nth-child(1) {
+    opacity: 0.2;
+    transform: translate(0,0);
+}
+
+nav li a:hover .layer i:nth-child(2) {
+    opacity: 0.4;
+    transform: translate(5px,-5px);
+}
+
+nav li a:hover .layer i:nth-child(3) {
+    opacity: 0.6;
+    transform: translate(10px,-10px);
+}
+
+nav li a:hover .layer i:nth-child(4) {
+    opacity: 0.8;
+    transform: translate(15px,-15px);
+}
+
+nav li a:hover .layer i:nth-child(5) {
+    opacity: 1.0;
+    transform: translate(20px,-20px);
+}
+
+/* customize --c */
+nav li:nth-child(1) .layer i, li:nth-child(1) .text {
+    --c: #12b7f5;
+}
+
+nav li:nth-child(2) .layer i, li:nth-child(2) .text {
+    --c: #2aae67;
+}
+
+
+nav li:nth-child(3) .layer i, li:nth-child(3) .text {
+    --c: #e79115;
+}
+
+
+nav li:nth-child(4) .layer i, li:nth-child(4) .text {
+    --c: #2075fd;
+    
+}
+
+
+nav li:nth-child(5) .layer i, li:nth-child(5) .text {
+    --c: #2d8dc5;
+}
+
+nav li:nth-child(7) .layer i, li:nth-child(7) .text {
+    --c: rgb(198, 56, 56);
+}
+
+/* styling main body */
+.sign-up-sect {
+    position: relative;
+    width: 1000px;
+    height: 560px;
+    margin: 13% auto 0;
+}
+
+.lady {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    border: 10px solid #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.lady img {
+    display: block;
+    margin: auto;
+    height: 100%;
+}
+
+.sign-up h1 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 39px;
+    display: block;
+}
+
+.sign-up {
+    position: absolute;
+    left: 58%;
+}
+
+.sign-up input, .sign-up button {
+    outline: navy;
+    width: 450px;
+    height: 40px;
+}
+
+.sign-up button {
+    cursor: pointer;
+    margin-bottom: 20px;
+    background-color: rgb(52, 9, 227);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.sign-up button:hover {
+    filter: brightness(1.2);
+}
+
+.sign-up form {
+    margin-top: 5px;
+    line-height: 35px;
+}
+
+.sign-up h2 {
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.sign-up span a {
+    border: 1px solid black;
+    padding: 15px 20px;
+    margin-right: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.sign-up small > a{
+    text-decoration: underline;
+    color: rgb(58, 16, 229);
+}
+
+.sign-up small > a:hover {
+    text-decoration: none;
+}
+
+.sign-up span a:hover {
+    filter: brightness(0.9);
+}
+
+.sign-up small {
+    line-height: 20px;
+}
+
+/* styling card components */
+.lightblue {
+    width: 100%;
+    position: relative;
+    background-color: #51c47f;
+    height: 800px;
+
+}
+
+.card-title {
+    position: absolute;
+    top: 10%;
+    left: 30.5%;
+    color: white;
+    text-align: center;
+    width: 500px;
+}
+
+.card-title p {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Suisse, Apercu, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.card-title h2 {
+    font-family: Apercu, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+}
+
+.card {
+    width: 230px;
+    height: 350px;
+    padding: 1em;
+    background: #07182e;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 1em 0.5em rgba(7, 24, 46, 0.3);
+}
+
+.card h2 {
+    z-index: 1;
+    margin-bottom: 15px;
+    color: white;
+    width: 200px;
+    text-align: center;
+}
+
+.card ul {
+    width: 100%;
+    z-index: 1;
+    color: white;
+    font-size: 13px;
+    line-height: 20px;
+
+}
+
+.card ul li {
+    margin-bottom: 20px;
+}
+
+/* ::before and ::after normally use to decorate the element */
+.card::before{
+    content: '';
+    position: absolute;
+    width: 100px;
+    background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255,48,255));       /* 创建渐变色 */
+    height: 130%;
+    animation: rotBGimg 3s linear infinite;
+    transition: all 0.2s linear;
+}
+
+/* define animation, how gradient bgc should rotate */
+@keyframes rotBGimg {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    background: #07182e;
+    inset: 5px;
+    border-radius: 15px;
+}
+
+.card-components {
+    position: absolute;
+    left: 17%;
+    top: 27%;
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+}
+
+.catalog {
+    position: absolute;
+    bottom: 150px;
+    left: 42.5%;
+}
+
+.catalog a {
+    color: black;
+    background-color: rgb(255, 211, 0);
+    border: 1px solid black;
+    padding: 10px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.catalog a:hover {
+    filter: brightness(0.9);
+}
+
+/* styling quiz */
+.yellow {
+    width: 100%;
+    position: relative;
+    height: 550px;
+    background-color: rgba(255, 211, 0);
+}
+
+.not-sure {
+    position: absolute;
+    width: 400px;
+    left: 15%;
+    top: 27%;
+    
+}
+
+.not-sure h1 {
+    margin-bottom: 15px;
+    font-size: 44px;
+    font-weight: 700;
+}
+
+.not-sure p {
+    margin-bottom: 35px;
+    line-height: 27px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.not-sure a {
+    font-size: 16px;
+    font-weight: 700;
+    border: 2px solid transparent;
+    padding: 8px 13px;
+    color: white;
+    background-color: rgb(58, 16, 229);
+    border-radius: 5px;
+}
+
+.not-sure a:hover {
+    filter: brightness(1.2);
+}
+
+.window {
+    position: absolute;
+    left: 65%;
+    top: 20%;
+}
+
+/* styling stories */
+.rice-color {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    background-color: #FFF0E5;;
+}
+
+.stories {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    
+
+}
+
+.stories h2 {
+    font-size: 44px;
+    font-weight: 700;
+    margin-bottom: 10px;
+
+}
+
+.story-desc {
+    width: 1150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.story-desc span a {
+    color: rgb(52, 9, 227);
+}
+
+.story-desc span a:hover {
+    border: 2px solid transparent;
+    padding: 10px 15px;
+    background-color: rgb(227, 227, 227);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+
+.fourimg {
+    width: 1150px;
+    position: absolute;
+    top: 25%;
+    margin-top: 30px;
+    justify-content: space-between;
+    display: flex;
+    left: 10%;
+}
+
+.imgs {
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+}
+
+.imgs img {
+    width: 100%;
+    height: 100%;
+}
+
+.imgs figcaption h3 {
+    color: rgb(16, 22, 47);
+    margin-top: 10px;
+    line-height: 25px;
+    margin-bottom: 5px;
+
+}
+
+.imgs figcaption p {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(16, 22, 47);
+}
+
+.imgs figcaption h3:hover, .imgs figcaption p:hover {
+    color: rgb(52, 9, 227);
+}
+
+/* styling join sth big */
+.dark-blue {
+    background-color: rgb(52, 9, 227);
+    width: 100%;
+    position: relative;
+    height: 1500px;
+}
+
+.join {
+    display: flex;
+    position: absolute;
+    width: 1100px;
+    top: 10%;
+    justify-content: space-between;
+    left: 10%;
+}
+
+.join span {
+    color: white;
+}
+
+
+.black {
+    position: absolute;
+    background-color: rgb(16, 22, 47);
+    width: 100%;
+    top: 23%;
+    height: 600px;
+}
+
+.lvl-up {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    color: white;
+    width: 1100px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.team-skill {
+    width: 500px;
+    
+}
+
+.team-skill h1 {
+    font-size: 44px;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.team-skill a {
+    color: black;
+    background-color: rgb(255, 211, 0);
+    border: 1px solid black;
+    padding: 10px 25px;
+    border-radius: 5px;
+}
+
+.team-skill a:hover {
+    filter: brightness(0.8);
+}
+
+.startfree {
+    position: absolute;
+    top: 75%;
+    left: 15%;
+    width: 1000px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.free h2 {
+    font-weight: 700;
+    font-size: 44px;
+}
+
+.free {
+    color: white;
+    width: 400px;
+}
+
+.free p {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    line-height: 25px;
+}
+
+.free a {
+    color: black;
+    background-color: rgb(255, 211, 0);
+    border: 1px solid transparent;
+    padding: 10px 25px;
+    border-radius: 5px;
+}
+
+.free a:hover {
+    filter: brightness(0.8);
+}
+
+/* styling contact */
+.contact {
+    width: 100%;
+    position: relative;
+    height: 270px;
+
+}
+
+.contact-link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 350px;
+    height: 350px;
+}
+
+.contact-link a{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgb(53, 148, 53);
+    background-color: rgb(53, 148, 53);    
+    align-items: center;
+    justify-content: center;
+    color: #F4f9ff;
+
+}
+
+.contact-link a:hover {
+    background-color: rgb(208, 159, 69);
+    border: 1px solid rgb(208, 159, 69);
+    transition-duration: 0.5s;
+}
+
+.contact-des {
+    position: absolute;
+    top: 55%;
+    left: 28%;
+    justify-content: space-between;
+    width: 950px;
+    display: flex;
+    color: rgb(144, 45, 45);
+}
+
+/* styling footer */
+.footer-blue {
+    position: relative; 
+    background-color: #2677c7;
+    width: 1074px;
+    height: 770px;
+    margin: 80px 0 0 350px;
+}
+
+.gray {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 1px solid rgb(225, 224, 224);
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-details {
+    width: 700px;
+    position: absolute;
+    font-size: 14px;
+    height: 700px;
+    left: 32%;
+    color: white;
+    top: 7%;
+}
+
+.footer-details > p {
+    margin-bottom: 40px;
+    line-height: 23px;
+}
+
+.contact-method {
+    margin-bottom: 30px;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-method a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-method a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.contact-method a:nth-child(1) {
+    background-color: #3b5998;
+}
+  
+.contact-method a:nth-child(2) {    
+    background-color: #0077b5;
+}
+
+.contact-method a:nth-child(3) {
+    background-color: #1da1f2;
+}
+
+.contact-method a:nth-child(4) {
+    background-color: #e4405f;
+}
+
+.contact-method a i {
+    line-height: 40px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.footer-blue table {
+    width: 700px;
+    height: 400px;
+    line-height: 30px;
+}
+
+.footer-details a {
+    color:  white;
+}
+
+.footer-details table a:hover {
+    text-decoration: none;
+}
+
+.footer-details a:active {
+    color: darkblue;
+}
+
+.footer-details table a {
+    text-decoration: underline;
+}
+
+.copyRight {
+    position: absolute;
+    width: 650px;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.privacy {
+    cursor: pointer;
+}  
+

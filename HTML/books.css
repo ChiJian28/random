@@ -1,0 +1,678 @@
+* {                     /*reset the default styles of HTML elements*/
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Lato,serif;
+    background-color: #f2f2f2;
+}
+
+  /* styling nav bar */
+nav{
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    height: 95px;
+    width: 100%;
+    background-color: transparent;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 0 50px;
+    flex-wrap: wrap;
+    transition: background-color 0.2s ease-in-out;
+}
+
+nav.scrolled {
+    background-color: #253177;
+
+}  
+
+.logo.scrolled {
+    color: #fff;
+}
+
+nav ul li a.scrolled  {
+    color: #f2f2f2;
+}   
+
+nav .tutor.scrolled {
+    color: #fff;
+    background-color: #374EFF;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 15px 40px;
+    border-radius: 4px;
+    box-shadow: 3px 3px 7px 2px rgb(109 121 255 / 30%);
+}
+
+
+  nav .logo{
+    color: rgb(99, 118, 161);
+    transition: color 0.2s ease-in-out;
+    font-size: 35px;
+    font-weight: 600;   
+
+  }
+  nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    position: absolute;
+    left: 20%;
+    top: 30%;
+    width: 100%;
+  }
+
+  nav ul li{
+    margin: 0 10px;
+    position: relative;
+  }
+  
+  .search-form input[type="text"] {   /*attribute selector, using attribute to style, attribute = "value" */
+    padding: 5px;                   /*为指定的attribute加上css*/
+    border-radius: 5px;             /*exp: input[type="text"] targets all <input> elements that have a type attribute with a value of text.*/
+    width: 500px;
+    height: 33px;
+    outline: none;  /* Remove the default blue outline */
+    border: none;
+}
+
+
+.search-form {
+    border: 0.5px solid lightgray;
+    background-color: white;
+    border-radius: 7px;
+}
+  
+.search-form button[type="submit"] {
+    background-color: transparent;
+    color: gray;    
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  nav ul li a{
+    color: rgb(99, 118, 161);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+
+  nav .menu-btn i{
+    color: #fff;   
+    font-size: 22px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  input[type="checkbox"]{
+    display: none;
+  }
+
+.layer {
+    width: 70px;
+    height: 70px;
+    transition: 0.3s;
+    margin-left: 10px;
+}
+
+.layer i{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 45%;
+    border: 1px solid var(--c);
+    border-radius: 6px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .text { 
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    width: 100%;
+    left: -30%;
+    text-align: center;
+    color: var(--c);        /* call var() to a customization --c */
+    transition: 0.3s;
+}
+
+nav ul a:hover .text {
+    opacity: 1;
+}
+
+
+nav li a:hover .layer {
+    transform: rotate(-35deg) skew(20deg);
+}
+
+nav li a:hover .layer i:nth-child(1) {
+    opacity: 0.2;
+    transform: translate(0,0);
+}
+
+nav li a:hover .layer i:nth-child(2) {
+    opacity: 0.4;
+    transform: translate(5px,-5px);
+}
+
+nav li a:hover .layer i:nth-child(3) {
+    opacity: 0.6;
+    transform: translate(10px,-10px);
+}
+
+nav li a:hover .layer i:nth-child(4) {
+    opacity: 0.8;
+    transform: translate(15px,-15px);
+}
+
+nav li a:hover .layer i:nth-child(5) {
+    opacity: 1.0;
+    transform: translate(20px,-20px);
+}
+
+/* customize --c */
+nav li:nth-child(1) .layer i, li:nth-child(1) .text {
+    --c: #12b7f5;
+}
+
+nav li:nth-child(2) .layer i, li:nth-child(2) .text {
+    --c: #2aae67;
+}
+
+
+nav li:nth-child(3) .layer i, li:nth-child(3) .text {
+    --c: #e79115;
+}
+
+
+nav li:nth-child(4) .layer i, li:nth-child(4) .text {
+    --c: #2075fd;
+    
+}
+
+
+nav li:nth-child(5) .layer i, li:nth-child(5) .text {
+    --c: #2d8dc5;
+}
+
+nav li:nth-child(7) .layer i, li:nth-child(7) .text {
+    --c: rgb(198, 56, 56);
+}
+
+.icon-badge {
+    display: inline-block;
+    position: relative;
+}
+
+.icon-badge .badge {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 10px;
+    right: 0;
+    left: 15px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    background-color: gray;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+.payment {
+    position: fixed;
+    z-index: 3;
+    top: 13%;
+    left: 95%;
+}  
+
+/* styling main body */
+.green {
+    width: 100%;
+    height: 800px;
+    position: relative;
+}
+
+/* styling subtitlte */
+.subt { 
+    margin-top: 8em;
+    text-align: center;
+    line-height: 1.5;
+    display: inline-block;  
+}
+
+.subt > p {
+    background-color: rgb(40, 37, 37);
+    color: white;
+    width: 89em;
+    padding: 10px 0;
+}
+
+
+/* styling reflect images */
+.rotate-books {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-top: 0;
+}
+
+.rotbook {
+    position: absolute;
+    width: 350px;
+    height: 200px;
+    left: 38%;
+    top: 30%;    
+    display: flex;
+    transform-style: preserve-3d;
+    animation: action 35s linear infinite;
+}
+
+.rotbook:hover {
+    cursor: pointer;
+    animation-play-state: paused;
+}
+
+@keyframes action {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+}
+
+.rotbook img {
+    width: 350px;
+    -webkit-box-reflect: below 15px -webkit-linear-gradient(transparent 10%, rgba(255,255,255,0.3));
+    height: 200px;
+    position: absolute;
+}
+.rotbook img:nth-child(1) {
+    transform: translateZ(500px);
+}
+.rotbook img:nth-child(2) {
+    transform: rotateY(60deg) translateZ(500px);
+}
+.rotbook img:nth-child(3) {
+    transform: rotateY(120deg) translateZ(500px);
+}
+.rotbook img:nth-child(4) {
+    transform: rotateY(180deg) translateZ(500px);
+}
+.rotbook img:nth-child(5) {
+    transform: rotateY(240deg) translateZ(500px);
+}
+.rotbook img:nth-child(6) {
+    transform: rotateY(300deg) translateZ(500px);
+}
+
+.p-a h1 {
+    margin-top: 30px;
+    font-family: Poynter,Georgia,serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+}
+
+.p-a {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    left: 30%;
+}
+
+/* styling all books */
+.container {
+    width: 100%;
+    position: relative;
+    height: 3300px;
+}
+
+.button-grp {
+    position: absolute;
+    left: 70px;
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 35px;
+}
+
+.button-grp a {
+    display: flex;
+}
+
+.button-grp h2 {
+    margin-top: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.button-grp button {
+    display: flex;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    line-height: 2.5;       /* button needs special value for line-height */
+
+}
+
+.button-grp h2 {
+    font-size: 12px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* styling books list */
+.cards {
+    position: absolute;
+    left: 350px;
+}
+
+.cards > small {
+    background-color: #dfdcdc;
+    width: 1000px;
+    padding: 10px 0;
+    justify-content: center;
+    display: flex;
+    color: #21282d;
+    margin-top: 30px;
+}
+
+.cards small a:hover {
+    text-decoration: underline;
+}
+
+.page {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    width: 1000px;   /* specify width and height of a container */
+    height: 430px;
+}
+
+.page.active {
+    display: block;
+}
+
+
+.price-books {
+    font-family: Lato,sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+    color: black;
+}
+
+table tr small a, figcaption p small a, .other-page a, .best-books a, .button-grp a, .button-grp button {
+    color: #347d56;
+
+}
+
+table tr a:hover, figcaption p small a:hover, .best-books a:hover, .button-grp a:hover, .button-grp button:hover, .other-page a:hover, .term-use a:hover {
+    text-decoration: underline;
+
+}
+
+main table td:nth-child(2) {
+    padding-left: 200px;
+    
+}
+
+main table {
+    border-collapse: collapse; 
+    
+}
+
+main table td {
+    border-bottom: 0.5px solid gray;
+    
+}
+
+main table td:last-child {
+    padding-left: 300px;
+    
+}
+
+main table td:last-child p {
+    display: none;
+}
+
+
+
+figure {
+    padding-top: 20px;
+    
+}
+
+.figures {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    width: 1000px;   /* specify width and height of a container */
+    height: 430px;
+    position: relative;
+    right: 2%;
+    margin-top: 80px;
+}
+
+
+figcaption {
+    display: inline-block;
+    width: 50%;
+    margin-left: 50px;
+    line-height: 25px;
+    text-align: left;
+}
+
+figcaption a {
+    color: #1a0dab;
+}
+
+figcaption h3:hover {
+    text-decoration: underline;
+}
+
+
+.desc {
+    color: #4d5156;
+    margin-top: 2px;
+    margin: 10px 10px 20px 0;
+}
+
+.pre-more {
+    color: #4d5156;
+    border: 1px solid rgb(232, 232, 232);
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px;
+    
+}
+
+.pre-order {
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 8px 30px;
+    background-color: #3d6db5;;
+    color: white;
+    position: absolute;
+    left: 78%;
+    top: 80%;
+    font-family: Lato, sans-serif;
+    font-size: 12.9973px;
+}
+
+.pre-order:hover {
+    filter: brightness(0.8);
+}
+
+.pre-more:hover {
+    background-color: rgb(245, 245, 245);
+    cursor: pointer;
+}
+
+smll-author:hover {
+    text-decoration: underline;
+}
+
+.author span a:hover {
+    text-decoration: underline;
+}
+
+/* style other pages for books */
+.other-page {
+    margin-top: 50px;
+    margin-left: 25em;
+
+}
+
+.best-books {
+    color: #21282d;;
+    font-family: Lato, sans-serif;
+    font-size: 12.185px;
+    line-height: 21.933px;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 50px;
+    border: 1px solid rgb(169, 169, 169);
+    padding: 30px;
+    position: absolute;
+    left: 0%;
+}
+
+.best-books ul li{
+    list-style-type: disc;
+}
+
+.best-books h2 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.best-books ul {
+    margin-left: 40px;
+}
+
+
+/* styling footer */
+footer {
+    position: relative;
+    width: 100%;
+    height: 380px;
+}
+
+footer table {
+    margin-top: 20px;
+    width: 95%;
+    line-height: 30px;
+    text-align: left;
+    font-family: Lato, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color:  #3e5962;
+    margin-left: 60px;
+    margin-bottom: 100px;
+}
+
+
+footer table td > a, .term-use a {
+    font-family: Lato, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color:  #3e5962;
+}
+
+footer table .font-subt {
+    font: 600 12px/20px Lato, sans-serif;       /* font: font-weight font-size line-height font-family  */
+}
+
+
+
+footer table ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+footer i {
+    color: white;
+    border: 1px solid transparent;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+footer i:hover {
+    color: black;
+    background-color: white;
+    transition: 0.3s ease;
+    border: 1px solid black;
+}
+
+.term-use {
+    display: flex;
+    margin-left: 60px;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.term-use li {
+    margin-right: 40px;
+}
+
+
+
+/* Back-page links */
+.cta {
+    position: fixed;
+    z-index: 3;
+    top: 90%;
+    left: 4%;
+    display: flex;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: white;
+    width: 5%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background: #6225e6;
+    transition: 1s;
+    box-shadow: 6px 6px 0 black;
+    transform: skewX(-15deg);
+}
+
+.cta:focus {
+    outline: none;
+}
+
+.cta:hover {
+    transition: 0.5s;
+    box-shadow: 10px 10px 0 #fbc638;
+    
+}
+
+.wrapper span {
+    transform: skewX(15deg);
+}
+   

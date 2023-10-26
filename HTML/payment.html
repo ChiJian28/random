@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="payment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   <!-- 调用外接icon -->
+    <link rel="stylesheet" href="resp-payment.css">
+</head>
+<body>
+    <!-- create header -->
+    <header>
+        <nav>
+            <div class="logo">
+                PlusAca.
+            </div>
+            <div class="dropdown">
+                <input type="checkbox" id="click">
+                <label for="click" class="menu-btn">
+                    <i class="fa fa-bars" style="font-size:24px"></i>
+                </label>
+                <!-- <button class="dropbtn">Dropdown</button> -->
+                <div class="dropdown-content">
+                    <div class="content">
+                        <a href="about.html"> 
+                            <i class="fa fa-university" aria-hidden="true"></i>
+                            <div class="text">About</div>
+                        </a>
+                    </div>
+                    <div class="content">
+                        <a href="../index.html">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                            <div class="text">Home</div>
+                        </a>
+                    </div>
+                    <div class="content">
+                        <a href="course.html">
+                            <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                            <div class="text">Course</div>
+                        </a>
+                    </div>
+                    <div class="content">
+                        <a href="contact.html">
+                            <i class="fa fa-comment" aria-hidden="true"></i>
+                            <div class="text">Contact</div>
+                        </a>
+                    </div>
+                    <div class="content">
+                        <a href="pricing.html">
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                            <div class="text">Pricing</div>
+                        </a>
+                    </div>
+                    <form class="search-form">
+						<button type="submit"><i class="fa fa-search"></i></button>
+						<input type="text" id="search-input">
+					</form>
+                </div>
+            </div>
+            
+            <!-- progress bar -->
+            <div class="progress-bar">
+                <ul>
+                    <li class="firstc" style="margin-right: 5px;"><i class="fa fa-check" style="font-size:10px;"></i></li>
+                    <li><small>Shopping cart</small></li>
+                    <li style="margin: 0 10px;"><div class="border"></div></li>
+                    <li style="margin-right: 5px;"><small class="icon">2</small></li>
+                    <li><small>Checkout</small></li>
+                    <li style="margin: 0 10px;"><div class="border" style="background-color: rgb(231, 231, 231);"></div></li>
+                    <li style="margin-right: 5px;"><small class="icon" style="color: rgb(96, 96, 96); border: 2px solid transparent; background-color: rgb(231, 231, 231);">3</small></li>
+                    <li style="color: rgb(164, 164, 164);"><small>Done</small></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- search function -->
+        <script>
+            const searchInput = document.getElementById('search-input');
+            const dropdown = document.createElement('div');
+            dropdown.id = 'myDropdown';
+            searchInput.parentNode.insertBefore(dropdown, searchInput.nextSibling);
+            
+            // Add an event listener to the search input for keyup events
+                searchInput.addEventListener('keyup', function() {
+            // Get the search term and convert it to lowercase
+            const search = searchInput.value.toLowerCase();
+
+            // Define an array of search results
+            const results = [
+            { title: 'Home page', url: '../index.html' },
+            { title: 'About page', url: 'about.html' },
+            { title: 'Contact page', url: 'contact.html' },
+            { title: 'Login page', url: 'login.html' },
+            { title: 'Pricing page', url: 'pricing.html' },
+            { title: 'Course page', url: 'course.html' },
+            { title: 'Tutor page', url: 'tutor.html' },
+            { title: 'Payment page', url: 'payment.html' },
+            { title: 'Book page', url: 'books.html' }
+            ];
+
+            // Filter the results based on the search term
+            const filteredResults = results.filter(function(result) {
+            return result.title.toLowerCase().includes(search);
+            });
+
+            // Display the search results in the dropdown
+            dropdown.innerHTML = "";
+            filteredResults.forEach(function(result) {
+            const link = document.createElement('a');
+            link.href = result.url;
+            link.textContent = result.title;
+            dropdown.appendChild(link);
+            });
+
+            // Show or hide the dropdown based on the number of search results
+            if (filteredResults.length > 0) {
+            dropdown.classList.add('show');
+            } else {
+            dropdown.classList.remove('show');
+            }
+        });
+
+            // Styling for the dropdown
+            const dropdownStyle = `
+                #myDropdown {
+                position: absolute;
+                background-color: #fff;
+                z-index: 1;
+                width: 80%;
+                }
+                #myDropdown.show {
+                display: block;
+                }
+                #myDropdown a {
+                color: #000;
+                padding: 12px 10px;
+                text-decoration: none;
+                display: block;
+                font-size: 14px;
+                }
+                #myDropdown a:hover {
+                background-color: #f2f2f2;
+                }
+            `;
+            
+            // Create a style element and append the dropdown style to it
+            const style = document.createElement('style');
+            style.innerHTML = dropdownStyle;
+            document.head.appendChild(style);
+         </script>
+    </header>
+    <!-- create main body -->
+    <main>
+        <!-- create billing details -->
+        <form onsubmit="return validateForm()">   <!-- besides to use js to do form validation, actually can add keyword 'required' at the input tag (HTML5 function) -->
+            <div class="text-container">
+                <h1>Billing details</h1>
+            </div>
+            <div class="container">
+                <label for="uname"><b>First & last name</b></label>
+                <input type="text" placeholder="Enter Yourname" id="uname" name="uname">
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" id="psw">
+                <label for="country"><b>Country</b></label>
+                <input list="Country" name="country" id="country" placeholder="United States of America">
+                <datalist id="Country">
+                    <option value="United States of America"></option>
+                    <option value="Malaysia"></option>
+                    <option value="Singapore"></option>
+                    <option value="Taiwan"></option>
+                    <option value="China"></option>
+                </datalist>
+                <table>
+                    <tr>
+                        <td><label><b>State / Country</b></label></td>
+                        <td class="second-c"><label><b>Zip Code</b></label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" style="width: 330px;" id="state-country" name="zip" required></td>
+                        <td class="second-c"><input type="text" style="width: 235px;" id="zip" name="zip" required></td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+        <!-- create payment method -->
+        <form class="f2" onsubmit="return validateForm()">   <!-- besides to use js to do form validation, actually can add keyword 'required' at the input tag (HTML5 function) -->
+            <div class="text-container">
+                <h1>Payment method</h1>
+            </div>
+            <div class="container">
+                <label for="cardnumber"><b>Credit number</b></label>
+                <input type="text" id="cardnumber" name="cardnumber">
+                <table>
+                    <tr>
+                        <td>
+                            <label>
+                                <b>Expiration date</b>
+                            </label>
+                        </td>
+                        <td>
+
+                        </td>
+                        <td style="padding-left: 120px;">
+                            <b>Security code</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input list="Month" name="month" id="month" placeholder="Month">
+                            <datalist id="Month">
+                                <option value="01"></option>
+                                <option value="02"></option>
+                                <option value="03"></option>
+                                <option value="04"></option>
+                                <option value="05"></option>
+                                <option value="06"></option>
+                                <option value="07"></option>
+                                <option value="08"></option>
+                                <option value="09"></option>
+                                <option value="10"></option>
+                                <option value="11"></option>
+                                <option value="12"></option>
+                            </datalist>
+                        </td>
+                        <td style="padding-left: 30px;">
+                            <input list="Year" name="year" id="year" placeholder="Year">
+                            <datalist id="Year">
+                                <option value="23"></option>
+                                <option value="22"></option>
+                                <option value="21"></option>
+                                <option value="20"></option>
+                            </datalist>
+                        </td>
+                        <td style="padding-left: 120px;">
+                            <input type="text" style="width: 225px;" id="secure" name="secure">
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit">Place order</button>
+            </div>
+        </form>
+        <!-- form validaiton function -->
+        <script>
+            function validateForm() {
+            var name = document.getElementById("uname").value;   //   通过variable去获取html里面的节点，然后在js file里面用variable来应用
+            var psw = document.getElementById("psw").value;
+            var cardnumber = document.getElementById("cardnumber").value;
+            var zip = document.getElementById('zip').value;
+            var month = document.getElementById("month").value;
+            var year = document.getElementById('year').value;
+            var secure = document.getElementById('secure').value;
+            const alphanumericRegex = /^[0-9a-zA-Z]+$/;
+
+            if (name == "" || psw =="" || cardnumber == "") {        // 这里的意思就是说：如果html里面的节点是空的话，就。。。
+                document.getElementById("uname").style.border = "1px solid red";
+                document.getElementById("psw").style.border = "1px solid red";
+                document.getElementById("cardnumber").style.border = "1px solid red";
+                document.getElementById("month").style.border = "1px solid red";
+                document.getElementById("year").style.border = "1px solid red";
+                alert("Please fill in the fields");
+                return false;
+            }
+
+            if (/\d/.test(name)) { // test if the input value contains a number using regex
+                document.getElementById("uname").style.border = "1px solid red";
+                alert("Name should not contain numbers.");
+                return false;
+            }
+
+            // test zip code without characters
+            if (!/\d/.test(zip)) {
+                document.getElementById("zip").style.border = "1px solid red";
+                alert("Zip code must contain only numbers.");
+                return false;
+            }
+
+            // test psw lengths
+            if (psw.length < 6 ) {
+                document.getElementById("psw").style.border = "1px solid red";
+                alert("Must be at least 6 characters");
+                return false;
+            } 
+
+            // test credit number lengths
+            if (cardnumber.length < 6 ) {
+                document.getElementById("cardnumber").style.border = "1px solid red";
+                alert("Must be at least 16 characters");
+                return false;
+            } 
+
+            // test credit number format
+            if (!/\d/.test(cardnumber)) { // test if the input value contains a number using regex
+                document.getElementById("cardnumber").style.border = "1px solid red";
+                alert("Credit Number must contain only numbers.");
+                return false;
+            }
+
+            // test security code format
+            if (!/\d/.test(secure)) { // test if the input value contains a number using regex
+                document.getElementById("secure").style.border = "1px solid red";
+                alert("Security code must contain only numbers.");
+                return false;
+            }
+            
+            // test security code lengths
+            if (secure.length !== 3 ) {
+                document.getElementById("secure").style.border = "1px solid red";
+                alert("Security code must be 3 characters");
+                return false;
+            } 
+
+        
+            return true; // Return true if all inputs pass validation
+        }
+        
+            // 1. use onsubmit = function at the form element
+            // 2. use addEventListener to the form element then use arrow function
+            // 3. use HTML5 keyword 'required' to the element  
+            // querySelector = 自定义target是谁: querySelector("#id"), querySelector(".class")
+            
+        </script>
+        <!-- cart summary -->
+        <div class="cart-summary">
+            <div class="row1" style="padding-bottom: 0;">
+                <span><i class="fa fa-shopping-cart" style="font-size:24px; color: black; margin-right: 10px;"></i>Cart Summary</span>
+            </div>
+            <div class="row1">
+                <div style="display: flex;">
+                    <p style="margin-right: 180px; margin-bottom: 10px; font-weight: bold;">1 x Plus Subcription</p>
+                    <p>RM59.90</p>
+                </div>
+                <aside>
+                    <small>Discover advanced courses, extra resources, and a supportive community.</small>
+                </aside>
+            </div>
+            <hr>
+            <div class="row1">
+                <div style="display: flex;">
+                    <p style="margin-right: 180px; margin-bottom: 10px; font-weight: bold;">1 x Plus Subcription</p>
+                    <p>RM59.90</p>
+                </div>
+                <aside>
+                    <small>Discover advanced courses, extra resources, and a supportive community.</small>
+                </aside>
+            </div>
+            <hr>
+            <div class="row1">
+                <div style="display: flex;">
+                    <p style="margin-right: 180px; margin-bottom: 10px; font-weight: bold;">1 x Plus Subcription</p>
+                    <p>RM59.90</p>
+                </div>
+                <aside>
+                    <small>Discover advanced courses, extra resources, and a supportive community.</small>
+                </aside>
+            </div>
+            <hr>
+            <p class="sub-total">
+                Sub total: <b>RM179.70</b>
+            </p>
+        </div>
+    </main>
+</body>
+</html>
+
